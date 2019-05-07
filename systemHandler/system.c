@@ -7,20 +7,58 @@
 
 #include"uart.h"
 #include"external_eeprom.h"
-#define PASS_SIZE 4
-uint8 savedPass[PASS_SIZE]={0,0,0,0};
-uint8 recievedPass[PASS_SIZE];
+#include"avr/wdt.h"
+#define PASSWORD_CHANGED 5
+#define OPEN_DOOR 3
+uint8 savedPass[100];
+uint8 recievedPass[100];
 uint8 size;
-uint8 i;
+uint8 PassmatchFlag=1;
+uint8 state;
+
+
 int main (void){
+	uint8 i=0;
+	uint8 j=0;
 	EEPROM_init();
 	UART_init();
-	EEPROM_writeArray(0x0311, recievedPass,size);
 	while(1){
-		size=UART_recieveByte();
-		_delay_ms(50);
-		UART_recieveArray(recievedPass,size);
-		EEPROM_writeArray(0x0311, recievedPass,size);
-
+		state = UART_recieveByte();
+		if(state =='*'){
+			size = UART_recieveByte();
+			UART_recieveArray(recievedPass,size);
+			EEPROM_readArray(0x0311,savedPass,size);
+			while(i<size){
+				if(recievedPass[i]!=savedPass[i]){
+					PassmatchFlag=0;
+					break;
+				}
+				i++;
+			}
+			UART_sendByte(PassmatchFlag);
+			if(UART_recieveByte()==PASSWORD_CHANGED){
+				size =UART_recieveByte();
+				UART_recieveArray(savedPass,size);
+				EEPROM_writeArray(0x0311,savedPass,size);
+				UART_sendByte(1);
+				wdt_enable(1);
+				while(1) {}
+			}
+		}
+		else if(state =='#'){
+			size = UART_recieveByte();
+			UART_recieveArray(recievedPass,size);
+			while(j<size){
+				if(recievedPass[j]!=savedPass[j]){
+					PassmatchFlag=0;
+					break;
+				}
+				j++;
+			}
+			UART_sendByte(PassmatchFlag);
+			if(UART_recieveByte()==PASSWORD_CHANGED){
+					//do some code
+			}
+		}
 	}
 }

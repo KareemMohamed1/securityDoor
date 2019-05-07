@@ -10,12 +10,11 @@
 
 #include"userinterfaceFunctions.h"
 
-static void setNewUserPassword(uint8 * pass ,uint8 * currentPass, uint8 PASS_SIZE);
 
 void start(void){
 	LCD_init();
 	LCD_displayString("Door Security");
-	_delay_ms(3000);
+	_delay_ms(500);
 	LCD_sendCommand(CLEAR_COMMAND);
 	LCD_displayString("Set pass:enter *");
 	LCD_goToRowColumn(1,0);
@@ -73,7 +72,7 @@ void getUserNewPassword(uint8 * pass, uint8 * passMatch, uint8 PASS_SIZE){
 	i=0;
 }
 
-void checkNewPasswordMatching(uint8 * pass, uint8 * passMatch,uint8 *currentPass, uint8 PASS_SIZE){
+void checkNewPasswordMatching(uint8 * pass, uint8 * passMatch,uint8 PASS_SIZE){
 	uint8 i = 0;
 	uint8 errorFlag=1;
 	for(i=0;i<PASS_SIZE;i++){
@@ -93,14 +92,6 @@ void checkNewPasswordMatching(uint8 * pass, uint8 * passMatch,uint8 *currentPass
 		LCD_sendCommand(CLEAR_COMMAND);
 		_delay_ms(1);
 		LCD_displayString("new pass is set");
-		 setNewUserPassword(pass,currentPass,PASS_SIZE);
-	}
-
-}
-void setNewUserPassword(uint8 * pass ,uint8 * currentPass, uint8 PASS_SIZE){
-	uint8 i;
-	for(i=0; i<PASS_SIZE;i++){
-		currentPass[i]=pass[i];
 	}
 }
 

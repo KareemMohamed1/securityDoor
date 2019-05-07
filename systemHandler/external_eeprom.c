@@ -150,11 +150,14 @@ uint8 EEPROM_readArray(uint16 u16addr, uint8 *u8data,uint8 size)
 		return ERROR;
 
 	/* Read Byte from Memory without send ACK */
-	for(i =0 ; i <size ; i++){
-		u8data[i] = TWI_readWithNACK();
-		if (TWI_getStatus() != TW_MR_DATA_NACK)
+	for(i =0 ; i <size-1 ; i++){
+		u8data[i] = TWI_readWithACK();
+		if (TWI_getStatus() != TW_MR_DATA_ACK)
 			return ERROR;
 	}
+	u8data[size-1]=TWI_readWithNACK();
+	if (TWI_getStatus() != TW_MR_DATA_NACK)
+		return ERROR;
 	/* Send the Stop Bit */
 	TWI_stop();
 	return SUCCESS;

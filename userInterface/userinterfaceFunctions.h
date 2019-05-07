@@ -14,7 +14,7 @@
 #include"keypad.h"
 void start(void);
 void getUserNewPassword(uint8 * pass, uint8 * passMatch, uint8 PASS_SIZE);
-void checkNewPasswordMatching(uint8 * pass, uint8 * passMatch,uint8 *currentPass, uint8 PASS_SIZE);
+void checkNewPasswordMatching(uint8 * pass, uint8 * passMatch,uint8 PASS_SIZE);
 
 void getCurrentUserPassword(uint8 * pass,uint8 PASS_SIZE);
 

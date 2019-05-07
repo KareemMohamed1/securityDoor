@@ -3,15 +3,15 @@ systemHandler.elf:     file format elf32-avr
 
 Sections:
 Idx Name          Size      VMA       LMA       File off  Algn
-  0 .text         0000072a  00000000  00000000  00000094  2**1
+  0 .text         00000788  00000000  00000000  00000094  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
-  1 .data         00000002  00800060  0000072a  000007be  2**0
+  1 .data         00000002  00800060  00000788  0000081c  2**0
                   CONTENTS, ALLOC, LOAD, DATA
-  2 .bss          000000ca  00800062  00800062  000007c0  2**0
+  2 .bss          000000ca  00800062  00800062  0000081e  2**0
                   ALLOC
-  3 .stab         000012fc  00000000  00000000  000007c0  2**2
+  3 .stab         000014b8  00000000  00000000  00000820  2**2
                   CONTENTS, READONLY, DEBUGGING
-  4 .stabstr      00000c37  00000000  00000000  00001abc  2**0
+  4 .stabstr      00000c63  00000000  00000000  00001cd8  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -51,7 +51,7 @@ Disassembly of section .text:
   60:	10 e0       	ldi	r17, 0x00	; 0
   62:	a0 e6       	ldi	r26, 0x60	; 96
   64:	b0 e0       	ldi	r27, 0x00	; 0
-  66:	ea e2       	ldi	r30, 0x2A	; 42
+  66:	e8 e8       	ldi	r30, 0x88	; 136
   68:	f7 e0       	ldi	r31, 0x07	; 7
   6a:	02 c0       	rjmp	.+4      	; 0x70 <.do_copy_data_start>
 
@@ -78,7 +78,7 @@ Disassembly of section .text:
   82:	b1 07       	cpc	r27, r17
   84:	e1 f7       	brne	.-8      	; 0x7e <.do_clear_bss_loop>
   86:	0e 94 5e 02 	call	0x4bc	; 0x4bc <main>
-  8a:	0c 94 93 03 	jmp	0x726	; 0x726 <_exit>
+  8a:	0c 94 c2 03 	jmp	0x784	; 0x784 <_exit>
 
 0000008e <__bad_interrupt>:
   8e:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
@@ -864,403 +864,463 @@ int main (void){
  4c0:	00 d0       	rcall	.+0      	; 0x4c2 <main+0x6>
  4c2:	cd b7       	in	r28, 0x3d	; 61
  4c4:	de b7       	in	r29, 0x3e	; 62
+	DDRB |=(1<<PB7)|(1<<PB6)|(1<<PB5);
+ 4c6:	a7 e3       	ldi	r26, 0x37	; 55
+ 4c8:	b0 e0       	ldi	r27, 0x00	; 0
+ 4ca:	e7 e3       	ldi	r30, 0x37	; 55
+ 4cc:	f0 e0       	ldi	r31, 0x00	; 0
+ 4ce:	80 81       	ld	r24, Z
+ 4d0:	80 6e       	ori	r24, 0xE0	; 224
+ 4d2:	8c 93       	st	X, r24
+	PORTB |=(1<<PB5);
+ 4d4:	a8 e3       	ldi	r26, 0x38	; 56
+ 4d6:	b0 e0       	ldi	r27, 0x00	; 0
+ 4d8:	e8 e3       	ldi	r30, 0x38	; 56
+ 4da:	f0 e0       	ldi	r31, 0x00	; 0
+ 4dc:	80 81       	ld	r24, Z
+ 4de:	80 62       	ori	r24, 0x20	; 32
+ 4e0:	8c 93       	st	X, r24
 	uint8 i=0;
- 4c6:	1a 82       	std	Y+2, r1	; 0x02
+ 4e2:	1a 82       	std	Y+2, r1	; 0x02
 	uint8 j=0;
- 4c8:	19 82       	std	Y+1, r1	; 0x01
+ 4e4:	19 82       	std	Y+1, r1	; 0x01
 	EEPROM_init();
- 4ca:	0e 94 49 00 	call	0x92	; 0x92 <EEPROM_init>
+ 4e6:	0e 94 49 00 	call	0x92	; 0x92 <EEPROM_init>
 	UART_init();
- 4ce:	0e 94 ff 02 	call	0x5fe	; 0x5fe <UART_init>
+ 4ea:	0e 94 2e 03 	call	0x65c	; 0x65c <UART_init>
 	while(1){
 		state = UART_recieveByte();
- 4d2:	0e 94 37 03 	call	0x66e	; 0x66e <UART_recieveByte>
- 4d6:	80 93 62 00 	sts	0x0062, r24
+ 4ee:	0e 94 66 03 	call	0x6cc	; 0x6cc <UART_recieveByte>
+ 4f2:	80 93 62 00 	sts	0x0062, r24
 		if(state =='*'){
- 4da:	80 91 62 00 	lds	r24, 0x0062
- 4de:	8a 32       	cpi	r24, 0x2A	; 42
- 4e0:	09 f0       	breq	.+2      	; 0x4e4 <main+0x28>
- 4e2:	5a c0       	rjmp	.+180    	; 0x598 <main+0xdc>
+ 4f6:	80 91 62 00 	lds	r24, 0x0062
+ 4fa:	8a 32       	cpi	r24, 0x2A	; 42
+ 4fc:	09 f0       	breq	.+2      	; 0x500 <main+0x44>
+ 4fe:	5a c0       	rjmp	.+180    	; 0x5b4 <main+0xf8>
 			size = UART_recieveByte();
- 4e4:	0e 94 37 03 	call	0x66e	; 0x66e <UART_recieveByte>
- 4e8:	80 93 c7 00 	sts	0x00C7, r24
+ 500:	0e 94 66 03 	call	0x6cc	; 0x6cc <UART_recieveByte>
+ 504:	80 93 c7 00 	sts	0x00C7, r24
 			UART_recieveArray(recievedPass,size);
- 4ec:	20 91 c7 00 	lds	r18, 0x00C7
- 4f0:	83 e6       	ldi	r24, 0x63	; 99
- 4f2:	90 e0       	ldi	r25, 0x00	; 0
- 4f4:	62 2f       	mov	r22, r18
- 4f6:	0e 94 6a 03 	call	0x6d4	; 0x6d4 <UART_recieveArray>
+ 508:	20 91 c7 00 	lds	r18, 0x00C7
+ 50c:	83 e6       	ldi	r24, 0x63	; 99
+ 50e:	90 e0       	ldi	r25, 0x00	; 0
+ 510:	62 2f       	mov	r22, r18
+ 512:	0e 94 99 03 	call	0x732	; 0x732 <UART_recieveArray>
 			EEPROM_readArray(0x0311,savedPass,size);
- 4fa:	40 91 c7 00 	lds	r20, 0x00C7
- 4fe:	28 ec       	ldi	r18, 0xC8	; 200
- 500:	30 e0       	ldi	r19, 0x00	; 0
- 502:	81 e1       	ldi	r24, 0x11	; 17
- 504:	93 e0       	ldi	r25, 0x03	; 3
- 506:	b9 01       	movw	r22, r18
- 508:	0e 94 4d 01 	call	0x29a	; 0x29a <EEPROM_readArray>
- 50c:	16 c0       	rjmp	.+44     	; 0x53a <main+0x7e>
+ 516:	40 91 c7 00 	lds	r20, 0x00C7
+ 51a:	28 ec       	ldi	r18, 0xC8	; 200
+ 51c:	30 e0       	ldi	r19, 0x00	; 0
+ 51e:	81 e1       	ldi	r24, 0x11	; 17
+ 520:	93 e0       	ldi	r25, 0x03	; 3
+ 522:	b9 01       	movw	r22, r18
+ 524:	0e 94 4d 01 	call	0x29a	; 0x29a <EEPROM_readArray>
+ 528:	16 c0       	rjmp	.+44     	; 0x556 <main+0x9a>
 			while(i<size){
 				if(recievedPass[i]!=savedPass[i]){
- 50e:	8a 81       	ldd	r24, Y+2	; 0x02
- 510:	88 2f       	mov	r24, r24
- 512:	90 e0       	ldi	r25, 0x00	; 0
- 514:	fc 01       	movw	r30, r24
- 516:	ed 59       	subi	r30, 0x9D	; 157
- 518:	ff 4f       	sbci	r31, 0xFF	; 255
- 51a:	20 81       	ld	r18, Z
- 51c:	8a 81       	ldd	r24, Y+2	; 0x02
- 51e:	88 2f       	mov	r24, r24
- 520:	90 e0       	ldi	r25, 0x00	; 0
- 522:	fc 01       	movw	r30, r24
- 524:	e8 53       	subi	r30, 0x38	; 56
- 526:	ff 4f       	sbci	r31, 0xFF	; 255
- 528:	80 81       	ld	r24, Z
- 52a:	28 17       	cp	r18, r24
- 52c:	19 f0       	breq	.+6      	; 0x534 <main+0x78>
+ 52a:	8a 81       	ldd	r24, Y+2	; 0x02
+ 52c:	88 2f       	mov	r24, r24
+ 52e:	90 e0       	ldi	r25, 0x00	; 0
+ 530:	fc 01       	movw	r30, r24
+ 532:	ed 59       	subi	r30, 0x9D	; 157
+ 534:	ff 4f       	sbci	r31, 0xFF	; 255
+ 536:	20 81       	ld	r18, Z
+ 538:	8a 81       	ldd	r24, Y+2	; 0x02
+ 53a:	88 2f       	mov	r24, r24
+ 53c:	90 e0       	ldi	r25, 0x00	; 0
+ 53e:	fc 01       	movw	r30, r24
+ 540:	e8 53       	subi	r30, 0x38	; 56
+ 542:	ff 4f       	sbci	r31, 0xFF	; 255
+ 544:	80 81       	ld	r24, Z
+ 546:	28 17       	cp	r18, r24
+ 548:	19 f0       	breq	.+6      	; 0x550 <main+0x94>
 					PassmatchFlag=0;
- 52e:	10 92 60 00 	sts	0x0060, r1
- 532:	08 c0       	rjmp	.+16     	; 0x544 <main+0x88>
+ 54a:	10 92 60 00 	sts	0x0060, r1
+ 54e:	08 c0       	rjmp	.+16     	; 0x560 <main+0xa4>
 					break;
 				}
 				i++;
- 534:	8a 81       	ldd	r24, Y+2	; 0x02
- 536:	8f 5f       	subi	r24, 0xFF	; 255
- 538:	8a 83       	std	Y+2, r24	; 0x02
+ 550:	8a 81       	ldd	r24, Y+2	; 0x02
+ 552:	8f 5f       	subi	r24, 0xFF	; 255
+ 554:	8a 83       	std	Y+2, r24	; 0x02
 		state = UART_recieveByte();
 		if(state =='*'){
 			size = UART_recieveByte();
 			UART_recieveArray(recievedPass,size);
 			EEPROM_readArray(0x0311,savedPass,size);
 			while(i<size){
- 53a:	90 91 c7 00 	lds	r25, 0x00C7
- 53e:	8a 81       	ldd	r24, Y+2	; 0x02
- 540:	89 17       	cp	r24, r25
- 542:	28 f3       	brcs	.-54     	; 0x50e <main+0x52>
+ 556:	90 91 c7 00 	lds	r25, 0x00C7
+ 55a:	8a 81       	ldd	r24, Y+2	; 0x02
+ 55c:	89 17       	cp	r24, r25
+ 55e:	28 f3       	brcs	.-54     	; 0x52a <main+0x6e>
 					PassmatchFlag=0;
 					break;
 				}
 				i++;
 			}
 			UART_sendByte(PassmatchFlag);
- 544:	80 91 60 00 	lds	r24, 0x0060
- 548:	0e 94 19 03 	call	0x632	; 0x632 <UART_sendByte>
+ 560:	80 91 60 00 	lds	r24, 0x0060
+ 564:	0e 94 48 03 	call	0x690	; 0x690 <UART_sendByte>
 			if(UART_recieveByte()==PASSWORD_CHANGED){
- 54c:	0e 94 37 03 	call	0x66e	; 0x66e <UART_recieveByte>
- 550:	85 30       	cpi	r24, 0x05	; 5
- 552:	09 f0       	breq	.+2      	; 0x556 <main+0x9a>
- 554:	be cf       	rjmp	.-132    	; 0x4d2 <main+0x16>
+ 568:	0e 94 66 03 	call	0x6cc	; 0x6cc <UART_recieveByte>
+ 56c:	85 30       	cpi	r24, 0x05	; 5
+ 56e:	09 f0       	breq	.+2      	; 0x572 <main+0xb6>
+ 570:	be cf       	rjmp	.-132    	; 0x4ee <main+0x32>
 				size =UART_recieveByte();
- 556:	0e 94 37 03 	call	0x66e	; 0x66e <UART_recieveByte>
- 55a:	80 93 c7 00 	sts	0x00C7, r24
+ 572:	0e 94 66 03 	call	0x6cc	; 0x6cc <UART_recieveByte>
+ 576:	80 93 c7 00 	sts	0x00C7, r24
 				UART_recieveArray(savedPass,size);
- 55e:	20 91 c7 00 	lds	r18, 0x00C7
- 562:	88 ec       	ldi	r24, 0xC8	; 200
- 564:	90 e0       	ldi	r25, 0x00	; 0
- 566:	62 2f       	mov	r22, r18
- 568:	0e 94 6a 03 	call	0x6d4	; 0x6d4 <UART_recieveArray>
+ 57a:	20 91 c7 00 	lds	r18, 0x00C7
+ 57e:	88 ec       	ldi	r24, 0xC8	; 200
+ 580:	90 e0       	ldi	r25, 0x00	; 0
+ 582:	62 2f       	mov	r22, r18
+ 584:	0e 94 99 03 	call	0x732	; 0x732 <UART_recieveArray>
 				EEPROM_writeArray(0x0311,savedPass,size);
- 56c:	40 91 c7 00 	lds	r20, 0x00C7
- 570:	28 ec       	ldi	r18, 0xC8	; 200
- 572:	30 e0       	ldi	r19, 0x00	; 0
- 574:	81 e1       	ldi	r24, 0x11	; 17
- 576:	93 e0       	ldi	r25, 0x03	; 3
- 578:	b9 01       	movw	r22, r18
- 57a:	0e 94 f3 00 	call	0x1e6	; 0x1e6 <EEPROM_writeArray>
+ 588:	40 91 c7 00 	lds	r20, 0x00C7
+ 58c:	28 ec       	ldi	r18, 0xC8	; 200
+ 58e:	30 e0       	ldi	r19, 0x00	; 0
+ 590:	81 e1       	ldi	r24, 0x11	; 17
+ 592:	93 e0       	ldi	r25, 0x03	; 3
+ 594:	b9 01       	movw	r22, r18
+ 596:	0e 94 f3 00 	call	0x1e6	; 0x1e6 <EEPROM_writeArray>
 				UART_sendByte(1);
- 57e:	81 e0       	ldi	r24, 0x01	; 1
- 580:	0e 94 19 03 	call	0x632	; 0x632 <UART_sendByte>
+ 59a:	81 e0       	ldi	r24, 0x01	; 1
+ 59c:	0e 94 48 03 	call	0x690	; 0x690 <UART_sendByte>
 				wdt_enable(1);
- 584:	88 e1       	ldi	r24, 0x18	; 24
- 586:	90 e0       	ldi	r25, 0x00	; 0
- 588:	29 e0       	ldi	r18, 0x09	; 9
- 58a:	0f b6       	in	r0, 0x3f	; 63
- 58c:	f8 94       	cli
- 58e:	a8 95       	wdr
- 590:	81 bd       	out	0x21, r24	; 33
- 592:	0f be       	out	0x3f, r0	; 63
- 594:	21 bd       	out	0x21, r18	; 33
- 596:	ff cf       	rjmp	.-2      	; 0x596 <main+0xda>
+ 5a0:	88 e1       	ldi	r24, 0x18	; 24
+ 5a2:	90 e0       	ldi	r25, 0x00	; 0
+ 5a4:	29 e0       	ldi	r18, 0x09	; 9
+ 5a6:	0f b6       	in	r0, 0x3f	; 63
+ 5a8:	f8 94       	cli
+ 5aa:	a8 95       	wdr
+ 5ac:	81 bd       	out	0x21, r24	; 33
+ 5ae:	0f be       	out	0x3f, r0	; 63
+ 5b0:	21 bd       	out	0x21, r18	; 33
+ 5b2:	ff cf       	rjmp	.-2      	; 0x5b2 <main+0xf6>
 				while(1) {}
 			}
 		}
 		else if(state =='#'){
- 598:	80 91 62 00 	lds	r24, 0x0062
- 59c:	83 32       	cpi	r24, 0x23	; 35
- 59e:	09 f0       	breq	.+2      	; 0x5a2 <main+0xe6>
- 5a0:	98 cf       	rjmp	.-208    	; 0x4d2 <main+0x16>
+ 5b4:	80 91 62 00 	lds	r24, 0x0062
+ 5b8:	83 32       	cpi	r24, 0x23	; 35
+ 5ba:	09 f0       	breq	.+2      	; 0x5be <main+0x102>
+ 5bc:	98 cf       	rjmp	.-208    	; 0x4ee <main+0x32>
 			size = UART_recieveByte();
- 5a2:	0e 94 37 03 	call	0x66e	; 0x66e <UART_recieveByte>
- 5a6:	80 93 c7 00 	sts	0x00C7, r24
+ 5be:	0e 94 66 03 	call	0x6cc	; 0x6cc <UART_recieveByte>
+ 5c2:	80 93 c7 00 	sts	0x00C7, r24
 			UART_recieveArray(recievedPass,size);
- 5aa:	20 91 c7 00 	lds	r18, 0x00C7
- 5ae:	83 e6       	ldi	r24, 0x63	; 99
- 5b0:	90 e0       	ldi	r25, 0x00	; 0
- 5b2:	62 2f       	mov	r22, r18
- 5b4:	0e 94 6a 03 	call	0x6d4	; 0x6d4 <UART_recieveArray>
- 5b8:	16 c0       	rjmp	.+44     	; 0x5e6 <main+0x12a>
+ 5c6:	20 91 c7 00 	lds	r18, 0x00C7
+ 5ca:	83 e6       	ldi	r24, 0x63	; 99
+ 5cc:	90 e0       	ldi	r25, 0x00	; 0
+ 5ce:	62 2f       	mov	r22, r18
+ 5d0:	0e 94 99 03 	call	0x732	; 0x732 <UART_recieveArray>
+			EEPROM_readArray(0x0311,savedPass,size);
+ 5d4:	40 91 c7 00 	lds	r20, 0x00C7
+ 5d8:	28 ec       	ldi	r18, 0xC8	; 200
+ 5da:	30 e0       	ldi	r19, 0x00	; 0
+ 5dc:	81 e1       	ldi	r24, 0x11	; 17
+ 5de:	93 e0       	ldi	r25, 0x03	; 3
+ 5e0:	b9 01       	movw	r22, r18
+ 5e2:	0e 94 4d 01 	call	0x29a	; 0x29a <EEPROM_readArray>
+ 5e6:	16 c0       	rjmp	.+44     	; 0x614 <main+0x158>
 			while(j<size){
 				if(recievedPass[j]!=savedPass[j]){
- 5ba:	89 81       	ldd	r24, Y+1	; 0x01
- 5bc:	88 2f       	mov	r24, r24
- 5be:	90 e0       	ldi	r25, 0x00	; 0
- 5c0:	fc 01       	movw	r30, r24
- 5c2:	ed 59       	subi	r30, 0x9D	; 157
- 5c4:	ff 4f       	sbci	r31, 0xFF	; 255
- 5c6:	20 81       	ld	r18, Z
- 5c8:	89 81       	ldd	r24, Y+1	; 0x01
- 5ca:	88 2f       	mov	r24, r24
- 5cc:	90 e0       	ldi	r25, 0x00	; 0
- 5ce:	fc 01       	movw	r30, r24
- 5d0:	e8 53       	subi	r30, 0x38	; 56
- 5d2:	ff 4f       	sbci	r31, 0xFF	; 255
- 5d4:	80 81       	ld	r24, Z
- 5d6:	28 17       	cp	r18, r24
- 5d8:	19 f0       	breq	.+6      	; 0x5e0 <main+0x124>
+ 5e8:	89 81       	ldd	r24, Y+1	; 0x01
+ 5ea:	88 2f       	mov	r24, r24
+ 5ec:	90 e0       	ldi	r25, 0x00	; 0
+ 5ee:	fc 01       	movw	r30, r24
+ 5f0:	ed 59       	subi	r30, 0x9D	; 157
+ 5f2:	ff 4f       	sbci	r31, 0xFF	; 255
+ 5f4:	20 81       	ld	r18, Z
+ 5f6:	89 81       	ldd	r24, Y+1	; 0x01
+ 5f8:	88 2f       	mov	r24, r24
+ 5fa:	90 e0       	ldi	r25, 0x00	; 0
+ 5fc:	fc 01       	movw	r30, r24
+ 5fe:	e8 53       	subi	r30, 0x38	; 56
+ 600:	ff 4f       	sbci	r31, 0xFF	; 255
+ 602:	80 81       	ld	r24, Z
+ 604:	28 17       	cp	r18, r24
+ 606:	19 f0       	breq	.+6      	; 0x60e <main+0x152>
 					PassmatchFlag=0;
- 5da:	10 92 60 00 	sts	0x0060, r1
- 5de:	08 c0       	rjmp	.+16     	; 0x5f0 <main+0x134>
+ 608:	10 92 60 00 	sts	0x0060, r1
+ 60c:	08 c0       	rjmp	.+16     	; 0x61e <main+0x162>
 					break;
 				}
 				j++;
- 5e0:	89 81       	ldd	r24, Y+1	; 0x01
- 5e2:	8f 5f       	subi	r24, 0xFF	; 255
- 5e4:	89 83       	std	Y+1, r24	; 0x01
-			}
+ 60e:	89 81       	ldd	r24, Y+1	; 0x01
+ 610:	8f 5f       	subi	r24, 0xFF	; 255
+ 612:	89 83       	std	Y+1, r24	; 0x01
 		}
 		else if(state =='#'){
 			size = UART_recieveByte();
 			UART_recieveArray(recievedPass,size);
+			EEPROM_readArray(0x0311,savedPass,size);
 			while(j<size){
- 5e6:	90 91 c7 00 	lds	r25, 0x00C7
- 5ea:	89 81       	ldd	r24, Y+1	; 0x01
- 5ec:	89 17       	cp	r24, r25
- 5ee:	28 f3       	brcs	.-54     	; 0x5ba <main+0xfe>
+ 614:	90 91 c7 00 	lds	r25, 0x00C7
+ 618:	89 81       	ldd	r24, Y+1	; 0x01
+ 61a:	89 17       	cp	r24, r25
+ 61c:	28 f3       	brcs	.-54     	; 0x5e8 <main+0x12c>
 					PassmatchFlag=0;
 					break;
 				}
 				j++;
 			}
 			UART_sendByte(PassmatchFlag);
- 5f0:	80 91 60 00 	lds	r24, 0x0060
- 5f4:	0e 94 19 03 	call	0x632	; 0x632 <UART_sendByte>
-			if(UART_recieveByte()==PASSWORD_CHANGED){
- 5f8:	0e 94 37 03 	call	0x66e	; 0x66e <UART_recieveByte>
- 5fc:	6a cf       	rjmp	.-300    	; 0x4d2 <main+0x16>
+ 61e:	80 91 60 00 	lds	r24, 0x0060
+ 622:	0e 94 48 03 	call	0x690	; 0x690 <UART_sendByte>
+			if(UART_recieveByte()==OPEN_DOOR){
+ 626:	0e 94 66 03 	call	0x6cc	; 0x6cc <UART_recieveByte>
+ 62a:	83 30       	cpi	r24, 0x03	; 3
+ 62c:	09 f0       	breq	.+2      	; 0x630 <main+0x174>
+ 62e:	5f cf       	rjmp	.-322    	; 0x4ee <main+0x32>
+				PORTB &=~(1<<PB7);
+ 630:	a8 e3       	ldi	r26, 0x38	; 56
+ 632:	b0 e0       	ldi	r27, 0x00	; 0
+ 634:	e8 e3       	ldi	r30, 0x38	; 56
+ 636:	f0 e0       	ldi	r31, 0x00	; 0
+ 638:	80 81       	ld	r24, Z
+ 63a:	8f 77       	andi	r24, 0x7F	; 127
+ 63c:	8c 93       	st	X, r24
+				PORTB |=(1<<PB6);
+ 63e:	a8 e3       	ldi	r26, 0x38	; 56
+ 640:	b0 e0       	ldi	r27, 0x00	; 0
+ 642:	e8 e3       	ldi	r30, 0x38	; 56
+ 644:	f0 e0       	ldi	r31, 0x00	; 0
+ 646:	80 81       	ld	r24, Z
+ 648:	80 64       	ori	r24, 0x40	; 64
+ 64a:	8c 93       	st	X, r24
+ 64c:	50 cf       	rjmp	.-352    	; 0x4ee <main+0x32>
 
-000005fe <UART_init>:
+0000064e <TIMER1_init>:
+ *  Created on: May 7, 2019
+ *      Author: karee
+ */
+#include "timer1.h"
+
+void TIMER1_init(){
+ 64e:	df 93       	push	r29
+ 650:	cf 93       	push	r28
+ 652:	cd b7       	in	r28, 0x3d	; 61
+ 654:	de b7       	in	r29, 0x3e	; 62
+
+}
+ 656:	cf 91       	pop	r28
+ 658:	df 91       	pop	r29
+ 65a:	08 95       	ret
+
+0000065c <UART_init>:
  */
 
 
 #include"uart.h"
 
 void UART_init(void){
- 5fe:	df 93       	push	r29
- 600:	cf 93       	push	r28
- 602:	cd b7       	in	r28, 0x3d	; 61
- 604:	de b7       	in	r29, 0x3e	; 62
+ 65c:	df 93       	push	r29
+ 65e:	cf 93       	push	r28
+ 660:	cd b7       	in	r28, 0x3d	; 61
+ 662:	de b7       	in	r29, 0x3e	; 62
 	UCSRA |=(1<<U2X);
- 606:	ab e2       	ldi	r26, 0x2B	; 43
- 608:	b0 e0       	ldi	r27, 0x00	; 0
- 60a:	eb e2       	ldi	r30, 0x2B	; 43
- 60c:	f0 e0       	ldi	r31, 0x00	; 0
- 60e:	80 81       	ld	r24, Z
- 610:	82 60       	ori	r24, 0x02	; 2
- 612:	8c 93       	st	X, r24
+ 664:	ab e2       	ldi	r26, 0x2B	; 43
+ 666:	b0 e0       	ldi	r27, 0x00	; 0
+ 668:	eb e2       	ldi	r30, 0x2B	; 43
+ 66a:	f0 e0       	ldi	r31, 0x00	; 0
+ 66c:	80 81       	ld	r24, Z
+ 66e:	82 60       	ori	r24, 0x02	; 2
+ 670:	8c 93       	st	X, r24
 	UCSRB =(1<<RXEN)|(1<<TXEN);
- 614:	ea e2       	ldi	r30, 0x2A	; 42
- 616:	f0 e0       	ldi	r31, 0x00	; 0
- 618:	88 e1       	ldi	r24, 0x18	; 24
- 61a:	80 83       	st	Z, r24
+ 672:	ea e2       	ldi	r30, 0x2A	; 42
+ 674:	f0 e0       	ldi	r31, 0x00	; 0
+ 676:	88 e1       	ldi	r24, 0x18	; 24
+ 678:	80 83       	st	Z, r24
 	UCSRC =(1<<URSEL)|(1<<UCSZ1)|(1<<UCSZ0);
- 61c:	e0 e4       	ldi	r30, 0x40	; 64
- 61e:	f0 e0       	ldi	r31, 0x00	; 0
- 620:	86 e8       	ldi	r24, 0x86	; 134
- 622:	80 83       	st	Z, r24
+ 67a:	e0 e4       	ldi	r30, 0x40	; 64
+ 67c:	f0 e0       	ldi	r31, 0x00	; 0
+ 67e:	86 e8       	ldi	r24, 0x86	; 134
+ 680:	80 83       	st	Z, r24
 	UBRRL = 103;
- 624:	e9 e2       	ldi	r30, 0x29	; 41
- 626:	f0 e0       	ldi	r31, 0x00	; 0
- 628:	87 e6       	ldi	r24, 0x67	; 103
- 62a:	80 83       	st	Z, r24
+ 682:	e9 e2       	ldi	r30, 0x29	; 41
+ 684:	f0 e0       	ldi	r31, 0x00	; 0
+ 686:	87 e6       	ldi	r24, 0x67	; 103
+ 688:	80 83       	st	Z, r24
 }
- 62c:	cf 91       	pop	r28
- 62e:	df 91       	pop	r29
- 630:	08 95       	ret
+ 68a:	cf 91       	pop	r28
+ 68c:	df 91       	pop	r29
+ 68e:	08 95       	ret
 
-00000632 <UART_sendByte>:
+00000690 <UART_sendByte>:
 
 void UART_sendByte(uint8 data){
- 632:	df 93       	push	r29
- 634:	cf 93       	push	r28
- 636:	0f 92       	push	r0
- 638:	cd b7       	in	r28, 0x3d	; 61
- 63a:	de b7       	in	r29, 0x3e	; 62
- 63c:	89 83       	std	Y+1, r24	; 0x01
+ 690:	df 93       	push	r29
+ 692:	cf 93       	push	r28
+ 694:	0f 92       	push	r0
+ 696:	cd b7       	in	r28, 0x3d	; 61
+ 698:	de b7       	in	r29, 0x3e	; 62
+ 69a:	89 83       	std	Y+1, r24	; 0x01
 	UDR = data;
- 63e:	ec e2       	ldi	r30, 0x2C	; 44
- 640:	f0 e0       	ldi	r31, 0x00	; 0
- 642:	89 81       	ldd	r24, Y+1	; 0x01
- 644:	80 83       	st	Z, r24
+ 69c:	ec e2       	ldi	r30, 0x2C	; 44
+ 69e:	f0 e0       	ldi	r31, 0x00	; 0
+ 6a0:	89 81       	ldd	r24, Y+1	; 0x01
+ 6a2:	80 83       	st	Z, r24
 	while(BIT_IS_CLEAR(UCSRA,TXC)){}
- 646:	eb e2       	ldi	r30, 0x2B	; 43
- 648:	f0 e0       	ldi	r31, 0x00	; 0
- 64a:	80 81       	ld	r24, Z
- 64c:	88 2f       	mov	r24, r24
- 64e:	90 e0       	ldi	r25, 0x00	; 0
- 650:	80 74       	andi	r24, 0x40	; 64
- 652:	90 70       	andi	r25, 0x00	; 0
- 654:	00 97       	sbiw	r24, 0x00	; 0
- 656:	b9 f3       	breq	.-18     	; 0x646 <UART_sendByte+0x14>
+ 6a4:	eb e2       	ldi	r30, 0x2B	; 43
+ 6a6:	f0 e0       	ldi	r31, 0x00	; 0
+ 6a8:	80 81       	ld	r24, Z
+ 6aa:	88 2f       	mov	r24, r24
+ 6ac:	90 e0       	ldi	r25, 0x00	; 0
+ 6ae:	80 74       	andi	r24, 0x40	; 64
+ 6b0:	90 70       	andi	r25, 0x00	; 0
+ 6b2:	00 97       	sbiw	r24, 0x00	; 0
+ 6b4:	b9 f3       	breq	.-18     	; 0x6a4 <UART_sendByte+0x14>
 	SET_BIT(UCSRA,TXC);
- 658:	ab e2       	ldi	r26, 0x2B	; 43
- 65a:	b0 e0       	ldi	r27, 0x00	; 0
- 65c:	eb e2       	ldi	r30, 0x2B	; 43
- 65e:	f0 e0       	ldi	r31, 0x00	; 0
- 660:	80 81       	ld	r24, Z
- 662:	80 64       	ori	r24, 0x40	; 64
- 664:	8c 93       	st	X, r24
+ 6b6:	ab e2       	ldi	r26, 0x2B	; 43
+ 6b8:	b0 e0       	ldi	r27, 0x00	; 0
+ 6ba:	eb e2       	ldi	r30, 0x2B	; 43
+ 6bc:	f0 e0       	ldi	r31, 0x00	; 0
+ 6be:	80 81       	ld	r24, Z
+ 6c0:	80 64       	ori	r24, 0x40	; 64
+ 6c2:	8c 93       	st	X, r24
 
 }
- 666:	0f 90       	pop	r0
- 668:	cf 91       	pop	r28
- 66a:	df 91       	pop	r29
- 66c:	08 95       	ret
+ 6c4:	0f 90       	pop	r0
+ 6c6:	cf 91       	pop	r28
+ 6c8:	df 91       	pop	r29
+ 6ca:	08 95       	ret
 
-0000066e <UART_recieveByte>:
+000006cc <UART_recieveByte>:
 
 uint8 UART_recieveByte(void){
- 66e:	df 93       	push	r29
- 670:	cf 93       	push	r28
- 672:	cd b7       	in	r28, 0x3d	; 61
- 674:	de b7       	in	r29, 0x3e	; 62
+ 6cc:	df 93       	push	r29
+ 6ce:	cf 93       	push	r28
+ 6d0:	cd b7       	in	r28, 0x3d	; 61
+ 6d2:	de b7       	in	r29, 0x3e	; 62
 	while(BIT_IS_CLEAR(UCSRA,RXC)){}
- 676:	eb e2       	ldi	r30, 0x2B	; 43
- 678:	f0 e0       	ldi	r31, 0x00	; 0
- 67a:	80 81       	ld	r24, Z
- 67c:	88 23       	and	r24, r24
- 67e:	dc f7       	brge	.-10     	; 0x676 <UART_recieveByte+0x8>
+ 6d4:	eb e2       	ldi	r30, 0x2B	; 43
+ 6d6:	f0 e0       	ldi	r31, 0x00	; 0
+ 6d8:	80 81       	ld	r24, Z
+ 6da:	88 23       	and	r24, r24
+ 6dc:	dc f7       	brge	.-10     	; 0x6d4 <UART_recieveByte+0x8>
 	return UDR;
- 680:	ec e2       	ldi	r30, 0x2C	; 44
- 682:	f0 e0       	ldi	r31, 0x00	; 0
- 684:	80 81       	ld	r24, Z
+ 6de:	ec e2       	ldi	r30, 0x2C	; 44
+ 6e0:	f0 e0       	ldi	r31, 0x00	; 0
+ 6e2:	80 81       	ld	r24, Z
 }
- 686:	cf 91       	pop	r28
- 688:	df 91       	pop	r29
- 68a:	08 95       	ret
+ 6e4:	cf 91       	pop	r28
+ 6e6:	df 91       	pop	r29
+ 6e8:	08 95       	ret
 
-0000068c <UART_sendArray>:
+000006ea <UART_sendArray>:
 
 
 
 void UART_sendArray(uint8 *data,uint8 size){
- 68c:	df 93       	push	r29
- 68e:	cf 93       	push	r28
- 690:	00 d0       	rcall	.+0      	; 0x692 <UART_sendArray+0x6>
- 692:	00 d0       	rcall	.+0      	; 0x694 <UART_sendArray+0x8>
- 694:	cd b7       	in	r28, 0x3d	; 61
- 696:	de b7       	in	r29, 0x3e	; 62
- 698:	9b 83       	std	Y+3, r25	; 0x03
- 69a:	8a 83       	std	Y+2, r24	; 0x02
- 69c:	6c 83       	std	Y+4, r22	; 0x04
+ 6ea:	df 93       	push	r29
+ 6ec:	cf 93       	push	r28
+ 6ee:	00 d0       	rcall	.+0      	; 0x6f0 <UART_sendArray+0x6>
+ 6f0:	00 d0       	rcall	.+0      	; 0x6f2 <UART_sendArray+0x8>
+ 6f2:	cd b7       	in	r28, 0x3d	; 61
+ 6f4:	de b7       	in	r29, 0x3e	; 62
+ 6f6:	9b 83       	std	Y+3, r25	; 0x03
+ 6f8:	8a 83       	std	Y+2, r24	; 0x02
+ 6fa:	6c 83       	std	Y+4, r22	; 0x04
 	uint8 i=0;
- 69e:	19 82       	std	Y+1, r1	; 0x01
- 6a0:	0e c0       	rjmp	.+28     	; 0x6be <UART_sendArray+0x32>
+ 6fc:	19 82       	std	Y+1, r1	; 0x01
+ 6fe:	0e c0       	rjmp	.+28     	; 0x71c <UART_sendArray+0x32>
 	while (i<size){
 		UART_sendByte(data[i]);
- 6a2:	89 81       	ldd	r24, Y+1	; 0x01
- 6a4:	28 2f       	mov	r18, r24
- 6a6:	30 e0       	ldi	r19, 0x00	; 0
- 6a8:	8a 81       	ldd	r24, Y+2	; 0x02
- 6aa:	9b 81       	ldd	r25, Y+3	; 0x03
- 6ac:	fc 01       	movw	r30, r24
- 6ae:	e2 0f       	add	r30, r18
- 6b0:	f3 1f       	adc	r31, r19
- 6b2:	80 81       	ld	r24, Z
- 6b4:	0e 94 19 03 	call	0x632	; 0x632 <UART_sendByte>
+ 700:	89 81       	ldd	r24, Y+1	; 0x01
+ 702:	28 2f       	mov	r18, r24
+ 704:	30 e0       	ldi	r19, 0x00	; 0
+ 706:	8a 81       	ldd	r24, Y+2	; 0x02
+ 708:	9b 81       	ldd	r25, Y+3	; 0x03
+ 70a:	fc 01       	movw	r30, r24
+ 70c:	e2 0f       	add	r30, r18
+ 70e:	f3 1f       	adc	r31, r19
+ 710:	80 81       	ld	r24, Z
+ 712:	0e 94 48 03 	call	0x690	; 0x690 <UART_sendByte>
 		i++;
- 6b8:	89 81       	ldd	r24, Y+1	; 0x01
- 6ba:	8f 5f       	subi	r24, 0xFF	; 255
- 6bc:	89 83       	std	Y+1, r24	; 0x01
+ 716:	89 81       	ldd	r24, Y+1	; 0x01
+ 718:	8f 5f       	subi	r24, 0xFF	; 255
+ 71a:	89 83       	std	Y+1, r24	; 0x01
 
 
 
 void UART_sendArray(uint8 *data,uint8 size){
 	uint8 i=0;
 	while (i<size){
- 6be:	99 81       	ldd	r25, Y+1	; 0x01
- 6c0:	8c 81       	ldd	r24, Y+4	; 0x04
- 6c2:	98 17       	cp	r25, r24
- 6c4:	70 f3       	brcs	.-36     	; 0x6a2 <UART_sendArray+0x16>
+ 71c:	99 81       	ldd	r25, Y+1	; 0x01
+ 71e:	8c 81       	ldd	r24, Y+4	; 0x04
+ 720:	98 17       	cp	r25, r24
+ 722:	70 f3       	brcs	.-36     	; 0x700 <UART_sendArray+0x16>
 		UART_sendByte(data[i]);
 		i++;
 	}
 }
- 6c6:	0f 90       	pop	r0
- 6c8:	0f 90       	pop	r0
- 6ca:	0f 90       	pop	r0
- 6cc:	0f 90       	pop	r0
- 6ce:	cf 91       	pop	r28
- 6d0:	df 91       	pop	r29
- 6d2:	08 95       	ret
+ 724:	0f 90       	pop	r0
+ 726:	0f 90       	pop	r0
+ 728:	0f 90       	pop	r0
+ 72a:	0f 90       	pop	r0
+ 72c:	cf 91       	pop	r28
+ 72e:	df 91       	pop	r29
+ 730:	08 95       	ret
 
-000006d4 <UART_recieveArray>:
+00000732 <UART_recieveArray>:
  void UART_recieveArray(uint8 *data, uint8 size){
- 6d4:	0f 93       	push	r16
- 6d6:	1f 93       	push	r17
- 6d8:	df 93       	push	r29
- 6da:	cf 93       	push	r28
- 6dc:	00 d0       	rcall	.+0      	; 0x6de <UART_recieveArray+0xa>
- 6de:	00 d0       	rcall	.+0      	; 0x6e0 <UART_recieveArray+0xc>
- 6e0:	cd b7       	in	r28, 0x3d	; 61
- 6e2:	de b7       	in	r29, 0x3e	; 62
- 6e4:	9b 83       	std	Y+3, r25	; 0x03
- 6e6:	8a 83       	std	Y+2, r24	; 0x02
- 6e8:	6c 83       	std	Y+4, r22	; 0x04
+ 732:	0f 93       	push	r16
+ 734:	1f 93       	push	r17
+ 736:	df 93       	push	r29
+ 738:	cf 93       	push	r28
+ 73a:	00 d0       	rcall	.+0      	; 0x73c <UART_recieveArray+0xa>
+ 73c:	00 d0       	rcall	.+0      	; 0x73e <UART_recieveArray+0xc>
+ 73e:	cd b7       	in	r28, 0x3d	; 61
+ 740:	de b7       	in	r29, 0x3e	; 62
+ 742:	9b 83       	std	Y+3, r25	; 0x03
+ 744:	8a 83       	std	Y+2, r24	; 0x02
+ 746:	6c 83       	std	Y+4, r22	; 0x04
 	 uint8 i =0;
- 6ea:	19 82       	std	Y+1, r1	; 0x01
- 6ec:	0f c0       	rjmp	.+30     	; 0x70c <UART_recieveArray+0x38>
+ 748:	19 82       	std	Y+1, r1	; 0x01
+ 74a:	0f c0       	rjmp	.+30     	; 0x76a <UART_recieveArray+0x38>
 	 while(i<size){
 		 data[i] = UART_recieveByte();
- 6ee:	89 81       	ldd	r24, Y+1	; 0x01
- 6f0:	28 2f       	mov	r18, r24
- 6f2:	30 e0       	ldi	r19, 0x00	; 0
- 6f4:	8a 81       	ldd	r24, Y+2	; 0x02
- 6f6:	9b 81       	ldd	r25, Y+3	; 0x03
- 6f8:	8c 01       	movw	r16, r24
- 6fa:	02 0f       	add	r16, r18
- 6fc:	13 1f       	adc	r17, r19
- 6fe:	0e 94 37 03 	call	0x66e	; 0x66e <UART_recieveByte>
- 702:	f8 01       	movw	r30, r16
- 704:	80 83       	st	Z, r24
+ 74c:	89 81       	ldd	r24, Y+1	; 0x01
+ 74e:	28 2f       	mov	r18, r24
+ 750:	30 e0       	ldi	r19, 0x00	; 0
+ 752:	8a 81       	ldd	r24, Y+2	; 0x02
+ 754:	9b 81       	ldd	r25, Y+3	; 0x03
+ 756:	8c 01       	movw	r16, r24
+ 758:	02 0f       	add	r16, r18
+ 75a:	13 1f       	adc	r17, r19
+ 75c:	0e 94 66 03 	call	0x6cc	; 0x6cc <UART_recieveByte>
+ 760:	f8 01       	movw	r30, r16
+ 762:	80 83       	st	Z, r24
 		 i++;
- 706:	89 81       	ldd	r24, Y+1	; 0x01
- 708:	8f 5f       	subi	r24, 0xFF	; 255
- 70a:	89 83       	std	Y+1, r24	; 0x01
+ 764:	89 81       	ldd	r24, Y+1	; 0x01
+ 766:	8f 5f       	subi	r24, 0xFF	; 255
+ 768:	89 83       	std	Y+1, r24	; 0x01
 		i++;
 	}
 }
  void UART_recieveArray(uint8 *data, uint8 size){
 	 uint8 i =0;
 	 while(i<size){
- 70c:	99 81       	ldd	r25, Y+1	; 0x01
- 70e:	8c 81       	ldd	r24, Y+4	; 0x04
- 710:	98 17       	cp	r25, r24
- 712:	68 f3       	brcs	.-38     	; 0x6ee <UART_recieveArray+0x1a>
+ 76a:	99 81       	ldd	r25, Y+1	; 0x01
+ 76c:	8c 81       	ldd	r24, Y+4	; 0x04
+ 76e:	98 17       	cp	r25, r24
+ 770:	68 f3       	brcs	.-38     	; 0x74c <UART_recieveArray+0x1a>
 		 data[i] = UART_recieveByte();
 		 i++;
 	 }
 }
- 714:	0f 90       	pop	r0
- 716:	0f 90       	pop	r0
- 718:	0f 90       	pop	r0
- 71a:	0f 90       	pop	r0
- 71c:	cf 91       	pop	r28
- 71e:	df 91       	pop	r29
- 720:	1f 91       	pop	r17
- 722:	0f 91       	pop	r16
- 724:	08 95       	ret
+ 772:	0f 90       	pop	r0
+ 774:	0f 90       	pop	r0
+ 776:	0f 90       	pop	r0
+ 778:	0f 90       	pop	r0
+ 77a:	cf 91       	pop	r28
+ 77c:	df 91       	pop	r29
+ 77e:	1f 91       	pop	r17
+ 780:	0f 91       	pop	r16
+ 782:	08 95       	ret
 
-00000726 <_exit>:
- 726:	f8 94       	cli
+00000784 <_exit>:
+ 784:	f8 94       	cli
 
-00000728 <__stop_program>:
- 728:	ff cf       	rjmp	.-2      	; 0x728 <__stop_program>
+00000786 <__stop_program>:
+ 786:	ff cf       	rjmp	.-2      	; 0x786 <__stop_program>

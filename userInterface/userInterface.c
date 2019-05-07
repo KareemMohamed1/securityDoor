@@ -63,7 +63,7 @@ int main (void){
 			_delay_ms(50);
 			PassmatchFlag = UART_recieveByte();
 			if(PassmatchFlag==1){
-				LCD_sendCommand(OPEN_DOOR);
+				UART_sendByte(OPEN_DOOR);
 				LCD_sendCommand(CLEAR_COMMAND);
 				LCD_displayString("welcome");
 				_delay_ms(500);

@@ -18,6 +18,8 @@ uint8 state;
 
 
 int main (void){
+	DDRB |=(1<<PB7)|(1<<PB6)|(1<<PB5);
+	PORTB |=(1<<PB5);
 	uint8 i=0;
 	uint8 j=0;
 	EEPROM_init();
@@ -48,6 +50,7 @@ int main (void){
 		else if(state =='#'){
 			size = UART_recieveByte();
 			UART_recieveArray(recievedPass,size);
+			EEPROM_readArray(0x0311,savedPass,size);
 			while(j<size){
 				if(recievedPass[j]!=savedPass[j]){
 					PassmatchFlag=0;
@@ -56,8 +59,10 @@ int main (void){
 				j++;
 			}
 			UART_sendByte(PassmatchFlag);
-			if(UART_recieveByte()==PASSWORD_CHANGED){
-					//do some code
+			if(UART_recieveByte()==OPEN_DOOR){
+				PORTB &=~(1<<PB7);
+				PORTB |=(1<<PB6);
+				//do some code
 			}
 		}
 	}

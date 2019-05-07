@@ -112,6 +112,5 @@ void getUserPasswordToOpenDoor(uint8 * pass,uint8 PASS_SIZE){
 	j=0;
 	LCD_sendCommand(CLEAR_COMMAND);
 	_delay_ms(50);
-	LCD_displayString("please wait...");
 }
 

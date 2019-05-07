@@ -1,0 +1,17 @@
+/*
+ * userinterfaceFunctions.h
+ *
+ *  Created on: May 5, 2019
+ *      Author: karee
+ */
+
+#ifndef USERINTERFACEFUNCTIONS_H_
+#define USERINTERFACEFUNCTIONS_H_
+#include"lcd.h"
+#include"keypad.h"
+void start(void);
+void getUserNewPassword(uint8 * pass, uint8 * passMatch, uint8 PASS_SIZE);
+void checkPasswordMatching(uint8 * pass, uint8 * passMatch, uint8 PASS_SIZE);
+void getUserPasswordToOpenDoor(uint8 * pass,uint8 PASS_SIZE);
+
+#endif /* USERINTERFACEFUNCTIONS_H_ */

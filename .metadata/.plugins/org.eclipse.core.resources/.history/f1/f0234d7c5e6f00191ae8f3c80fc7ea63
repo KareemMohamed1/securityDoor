@@ -1,0 +1,13 @@
+/*
+ * uart.c
+ *
+ *  Created on: May 5, 2019
+ *      Author: karee
+ */
+
+
+#include"uart.h"
+
+void UART1_init(void){
+	UCSRA |=(1<<U2X);
+}

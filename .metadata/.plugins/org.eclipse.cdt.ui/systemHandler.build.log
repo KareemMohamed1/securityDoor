@@ -1,0 +1,20 @@
+04:39:35 **** Incremental Build of configuration Debug for project systemHandler ****
+make all 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega16 systemHandler.elf
+AVR Memory Usage
+----------------
+Device: atmega16
+
+Program:    1836 bytes (11.2% Full)
+(.text + .data + .bootloader)
+
+Data:        204 bytes (19.9% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
+
+04:39:36 Build Finished (took 148ms)
+

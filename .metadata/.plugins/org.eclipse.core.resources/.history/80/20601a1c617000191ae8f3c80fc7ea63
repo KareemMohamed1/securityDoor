@@ -1,0 +1,126 @@
+/*
+ ============================================================================
+ Name        : userinterfaceFunction.c
+ Author      : kareem mohamed
+ Description : the main source file application for user interface
+ 	 	 	   with the security door system.
+ Date        : 5/5/2019
+ ============================================================================
+ */
+
+#include"userinterfaceFunctions.h"
+
+static void setNewUserPassword(uint8 * pass ,uint8 * currentPass, uint8 PASS_SIZE);
+
+void start(void){
+	LCD_init();
+	LCD_displayString("Door Security");
+	_delay_ms(500);
+	LCD_sendCommand(CLEAR_COMMAND);
+	LCD_displayString("Set pass:enter *");
+	LCD_goToRowColumn(1,0);
+	LCD_displayString("Open door:enter#");
+}
+
+void getCurrentUserPassword(uint8 * pass,uint8 PASS_SIZE){
+	uint8 i =0;
+	LCD_sendCommand(CLEAR_COMMAND);
+	LCD_displayString("current pass:");
+	LCD_goToRowColumn(1,0);
+	while(i<PASS_SIZE){
+		if(KEYPAD_getPressedKey()>=0 &&KEYPAD_getPressedKey()<=9){
+			pass[i]=KEYPAD_getPressedKey();
+			_delay_ms(250);
+			LCD_sendCharacter('*');
+			i++;
+		}
+	}
+
+}
+
+
+void getUserNewPassword(uint8 * pass, uint8 * passMatch, uint8 PASS_SIZE){
+	uint8 i=0;
+	LCD_sendCommand(CLEAR_COMMAND);
+	LCD_displayString("note that pass");
+	LCD_goToRowColumn(1,0);
+	LCD_displayString("is 4 digits pin");
+	_delay_ms(2000);
+	LCD_sendCommand(CLEAR_COMMAND);
+	LCD_displayString("Enter new pass");
+	LCD_goToRowColumn(1,0);
+	while(i<PASS_SIZE){
+		if(KEYPAD_getPressedKey()>=0 &&KEYPAD_getPressedKey()<=9){
+			pass[i]=KEYPAD_getPressedKey();
+			_delay_ms(250);
+			LCD_sendCharacter('*');
+			i++;
+		}
+	}
+	i=0;
+	LCD_sendCommand(CLEAR_COMMAND);
+	_delay_ms(50);
+	LCD_displayString("RE-enter Pass");
+	LCD_goToRowColumn(1,0);
+	while(i<PASS_SIZE){
+		if(KEYPAD_getPressedKey()>=0 &&KEYPAD_getPressedKey()<=9){
+			passMatch[i]=KEYPAD_getPressedKey();
+			_delay_ms(250);
+			LCD_sendCharacter('*');
+			i++;
+		}
+	}
+	i=0;
+}
+
+void checkNewPasswordMatching(uint8 * pass, uint8 * passMatch,uint8 *currentPass, uint8 PASS_SIZE){
+	uint8 i = 0;
+	uint8 errorFlag=1;
+	for(i=0;i<PASS_SIZE;i++){
+		if(passMatch[i]!=pass[i]){
+			errorFlag=0;
+			LCD_sendCommand(CLEAR_COMMAND);
+			_delay_ms(1);
+			LCD_displayString("pass not match");
+			LCD_goToRowColumn(1,0);
+			LCD_displayString("repeat: enter 0");
+			while(KEYPAD_getPressedKey()!=0);
+			errorFlag=1;
+			getUserNewPassword(pass,passMatch,PASS_SIZE);
+		}
+	}
+	if(errorFlag==1){
+		LCD_sendCommand(CLEAR_COMMAND);
+		_delay_ms(1);
+		LCD_displayString("new pass is set");
+
+	}
+
+}
+void setNewUserPassword(uint8 * pass ,uint8 * currentPass, uint8 PASS_SIZE){
+	uint8 i;
+	for(i=0; i<PASS_SIZE;i++){
+		currentPass[i]=pass[i];
+	}
+}
+
+void getUserPasswordToOpenDoor(uint8 * pass,uint8 PASS_SIZE){
+	uint8 j =0;
+	LCD_sendCommand(CLEAR_COMMAND);
+	_delay_ms(50);
+	LCD_displayString("pass to open:");
+	LCD_goToRowColumn(1,0);
+	while(j<PASS_SIZE){
+		if(KEYPAD_getPressedKey()>=0 &&KEYPAD_getPressedKey()<=9){
+			pass[j]=KEYPAD_getPressedKey();
+			_delay_ms(300);
+			LCD_sendCharacter('*');
+			j++;
+		}
+	}
+	j=0;
+	LCD_sendCommand(CLEAR_COMMAND);
+	_delay_ms(50);
+	LCD_displayString("please wait...");
+}
+

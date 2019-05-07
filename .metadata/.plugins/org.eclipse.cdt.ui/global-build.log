@@ -1,0 +1,1256 @@
+02:58:47 **** Incremental Build of configuration Debug for project userInterface ****
+make all 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega16 userInterface.elf
+AVR Memory Usage
+----------------
+Device: atmega16
+
+Program:   12720 bytes (77.6% Full)
+(.text + .data + .bootloader)
+
+Data:        238 bytes (23.2% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
+03:05:53 **** Incremental Build of configuration Debug for project systemHandler ****
+make all 
+Building file: ../system.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega16 -DF_CPU=1000000UL -MMD -MP -MF"system.d" -MT"system.o" -c -o "system.o" "../system.c"
+In file included from ../uart.h:13,
+                 from ../system.c:8:
+c:/winavr-20100110/lib/gcc/../../avr/include/util/delay.h:90:3: warning: #warning "Compiler optimizations disabled; functions from <util/delay.h> won't work as designed"
+Finished building: ../system.c
+ 
+Building target: systemHandler.elf
+Invoking: AVR C Linker
+avr-gcc -Wl,-Map,systemHandler.map -mmcu=atmega16 -o "systemHandler.elf"  ./external_eeprom.o ./i2c.o ./system.o ./uart.o   
+Finished building target: systemHandler.elf
+ 
+Invoking: AVR Create Extended Listing
+avr-objdump -h -S systemHandler.elf  >"systemHandler.lss"
+Finished building: systemHandler.lss
+ 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega16 systemHandler.elf
+AVR Memory Usage
+----------------
+Device: atmega16
+
+Program:    1748 bytes (10.7% Full)
+(.text + .data + .bootloader)
+
+Data:        204 bytes (19.9% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
+03:05:54 **** Incremental Build of configuration Debug for project userInterface ****
+make all 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega16 userInterface.elf
+AVR Memory Usage
+----------------
+Device: atmega16
+
+Program:   12720 bytes (77.6% Full)
+(.text + .data + .bootloader)
+
+Data:        238 bytes (23.2% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
+03:07:52 **** Incremental Build of configuration Debug for project systemHandler ****
+make all 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega16 systemHandler.elf
+AVR Memory Usage
+----------------
+Device: atmega16
+
+Program:    1748 bytes (10.7% Full)
+(.text + .data + .bootloader)
+
+Data:        204 bytes (19.9% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
+03:07:52 **** Incremental Build of configuration Debug for project userInterface ****
+make all 
+Building file: ../userInterface.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega16 -DF_CPU=1000000UL -MMD -MP -MF"userInterface.d" -MT"userInterface.o" -c -o "userInterface.o" "../userInterface.c"
+In file included from ../lcd.h:14,
+                 from ../userinterfaceFunctions.h:13,
+                 from ../userInterface.c:11:
+c:/winavr-20100110/lib/gcc/../../avr/include/util/delay.h:90:3: warning: #warning "Compiler optimizations disabled; functions from <util/delay.h> won't work as designed"
+Finished building: ../userInterface.c
+ 
+Building target: userInterface.elf
+Invoking: AVR C Linker
+avr-gcc -Wl,-Map,userInterface.map -mmcu=atmega16 -o "userInterface.elf"  ./keypad.o ./lcd.o ./uart.o ./userInterface.o ./userinterfaceFunctions.o   
+Finished building target: userInterface.elf
+ 
+Invoking: AVR Create Extended Listing
+avr-objdump -h -S userInterface.elf  >"userInterface.lss"
+Finished building: userInterface.lss
+ 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega16 userInterface.elf
+AVR Memory Usage
+----------------
+Device: atmega16
+
+Program:   12762 bytes (77.9% Full)
+(.text + .data + .bootloader)
+
+Data:        238 bytes (23.2% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
+03:07:56 **** Incremental Build of configuration Debug for project systemHandler ****
+make all 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega16 systemHandler.elf
+AVR Memory Usage
+----------------
+Device: atmega16
+
+Program:    1748 bytes (10.7% Full)
+(.text + .data + .bootloader)
+
+Data:        204 bytes (19.9% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
+03:07:56 **** Incremental Build of configuration Debug for project userInterface ****
+make all 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega16 userInterface.elf
+AVR Memory Usage
+----------------
+Device: atmega16
+
+Program:   12762 bytes (77.9% Full)
+(.text + .data + .bootloader)
+
+Data:        238 bytes (23.2% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
+03:25:34 **** Incremental Build of configuration Debug for project systemHandler ****
+make all 
+Building file: ../system.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega16 -DF_CPU=1000000UL -MMD -MP -MF"system.d" -MT"system.o" -c -o "system.o" "../system.c"
+In file included from ../uart.h:13,
+                 from ../system.c:8:
+c:/winavr-20100110/lib/gcc/../../avr/include/util/delay.h:90:3: warning: #warning "Compiler optimizations disabled; functions from <util/delay.h> won't work as designed"
+Finished building: ../system.c
+ 
+Building target: systemHandler.elf
+Invoking: AVR C Linker
+avr-gcc -Wl,-Map,systemHandler.map -mmcu=atmega16 -o "systemHandler.elf"  ./external_eeprom.o ./i2c.o ./system.o ./uart.o   
+Finished building target: systemHandler.elf
+ 
+Invoking: AVR Create Extended Listing
+avr-objdump -h -S systemHandler.elf  >"systemHandler.lss"
+Finished building: systemHandler.lss
+ 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega16 systemHandler.elf
+AVR Memory Usage
+----------------
+Device: atmega16
+
+Program:    1706 bytes (10.4% Full)
+(.text + .data + .bootloader)
+
+Data:        204 bytes (19.9% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
+03:25:35 **** Incremental Build of configuration Debug for project userInterface ****
+make all 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega16 userInterface.elf
+AVR Memory Usage
+----------------
+Device: atmega16
+
+Program:   12762 bytes (77.9% Full)
+(.text + .data + .bootloader)
+
+Data:        238 bytes (23.2% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
+03:25:52 **** Incremental Build of configuration Debug for project systemHandler ****
+make all 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega16 systemHandler.elf
+AVR Memory Usage
+----------------
+Device: atmega16
+
+Program:    1706 bytes (10.4% Full)
+(.text + .data + .bootloader)
+
+Data:        204 bytes (19.9% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
+03:25:53 **** Incremental Build of configuration Debug for project userInterface ****
+make all 
+Building file: ../userInterface.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega16 -DF_CPU=1000000UL -MMD -MP -MF"userInterface.d" -MT"userInterface.o" -c -o "userInterface.o" "../userInterface.c"
+In file included from ../lcd.h:14,
+                 from ../userinterfaceFunctions.h:13,
+                 from ../userInterface.c:11:
+c:/winavr-20100110/lib/gcc/../../avr/include/util/delay.h:90:3: warning: #warning "Compiler optimizations disabled; functions from <util/delay.h> won't work as designed"
+Finished building: ../userInterface.c
+ 
+Building target: userInterface.elf
+Invoking: AVR C Linker
+avr-gcc -Wl,-Map,userInterface.map -mmcu=atmega16 -o "userInterface.elf"  ./keypad.o ./lcd.o ./uart.o ./userInterface.o ./userinterfaceFunctions.o   
+Finished building target: userInterface.elf
+ 
+Invoking: AVR Create Extended Listing
+avr-objdump -h -S userInterface.elf  >"userInterface.lss"
+Finished building: userInterface.lss
+ 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega16 userInterface.elf
+AVR Memory Usage
+----------------
+Device: atmega16
+
+Program:   12748 bytes (77.8% Full)
+(.text + .data + .bootloader)
+
+Data:        238 bytes (23.2% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
+03:32:31 **** Incremental Build of configuration Debug for project systemHandler ****
+make all 
+Building file: ../system.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega16 -DF_CPU=1000000UL -MMD -MP -MF"system.d" -MT"system.o" -c -o "system.o" "../system.c"
+In file included from ../uart.h:13,
+                 from ../system.c:8:
+c:/winavr-20100110/lib/gcc/../../avr/include/util/delay.h:90:3: warning: #warning "Compiler optimizations disabled; functions from <util/delay.h> won't work as designed"
+Finished building: ../system.c
+ 
+Building target: systemHandler.elf
+Invoking: AVR C Linker
+avr-gcc -Wl,-Map,systemHandler.map -mmcu=atmega16 -o "systemHandler.elf"  ./external_eeprom.o ./i2c.o ./system.o ./uart.o   
+Finished building target: systemHandler.elf
+ 
+Invoking: AVR Create Extended Listing
+avr-objdump -h -S systemHandler.elf  >"systemHandler.lss"
+Finished building: systemHandler.lss
+ 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega16 systemHandler.elf
+AVR Memory Usage
+----------------
+Device: atmega16
+
+Program:    1712 bytes (10.4% Full)
+(.text + .data + .bootloader)
+
+Data:        204 bytes (19.9% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
+03:32:31 **** Incremental Build of configuration Debug for project userInterface ****
+make all 
+Building file: ../userInterface.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega16 -DF_CPU=1000000UL -MMD -MP -MF"userInterface.d" -MT"userInterface.o" -c -o "userInterface.o" "../userInterface.c"
+In file included from ../lcd.h:14,
+                 from ../userinterfaceFunctions.h:13,
+                 from ../userInterface.c:11:
+c:/winavr-20100110/lib/gcc/../../avr/include/util/delay.h:90:3: warning: #warning "Compiler optimizations disabled; functions from <util/delay.h> won't work as designed"
+Finished building: ../userInterface.c
+ 
+Building target: userInterface.elf
+Invoking: AVR C Linker
+avr-gcc -Wl,-Map,userInterface.map -mmcu=atmega16 -o "userInterface.elf"  ./keypad.o ./lcd.o ./uart.o ./userInterface.o ./userinterfaceFunctions.o   
+Finished building target: userInterface.elf
+ 
+Invoking: AVR Create Extended Listing
+avr-objdump -h -S userInterface.elf  >"userInterface.lss"
+Finished building: userInterface.lss
+ 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega16 userInterface.elf
+AVR Memory Usage
+----------------
+Device: atmega16
+
+Program:   12752 bytes (77.8% Full)
+(.text + .data + .bootloader)
+
+Data:        238 bytes (23.2% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
+03:43:28 **** Incremental Build of configuration Debug for project systemHandler ****
+make all 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega16 systemHandler.elf
+AVR Memory Usage
+----------------
+Device: atmega16
+
+Program:    1712 bytes (10.4% Full)
+(.text + .data + .bootloader)
+
+Data:        204 bytes (19.9% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
+03:43:28 **** Incremental Build of configuration Debug for project userInterface ****
+make all 
+Building file: ../userInterface.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega16 -DF_CPU=1000000UL -MMD -MP -MF"userInterface.d" -MT"userInterface.o" -c -o "userInterface.o" "../userInterface.c"
+In file included from ../lcd.h:14,
+                 from ../userinterfaceFunctions.h:13,
+                 from ../userInterface.c:11:
+c:/winavr-20100110/lib/gcc/../../avr/include/util/delay.h:90:3: warning: #warning "Compiler optimizations disabled; functions from <util/delay.h> won't work as designed"
+../userInterface.c: In function 'main':
+../userInterface.c:46: warning: implicit declaration of function 'enable_watchdog'
+Finished building: ../userInterface.c
+ 
+Building target: userInterface.elf
+Invoking: AVR C Linker
+avr-gcc -Wl,-Map,userInterface.map -mmcu=atmega16 -o "userInterface.elf"  ./keypad.o ./lcd.o ./uart.o ./userInterface.o ./userinterfaceFunctions.o   
+./userInterface.o: In function `main':
+../userInterface.c:46: undefined reference to `enable_watchdog'
+make: *** [userInterface.elf] Error 1
+03:44:15 **** Incremental Build of configuration Debug for project systemHandler ****
+make all 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega16 systemHandler.elf
+AVR Memory Usage
+----------------
+Device: atmega16
+
+Program:    1712 bytes (10.4% Full)
+(.text + .data + .bootloader)
+
+Data:        204 bytes (19.9% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
+03:44:16 **** Incremental Build of configuration Debug for project userInterface ****
+make all 
+Building file: ../userInterface.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega16 -DF_CPU=1000000UL -MMD -MP -MF"userInterface.d" -MT"userInterface.o" -c -o "userInterface.o" "../userInterface.c"
+In file included from ../lcd.h:14,
+                 from ../userinterfaceFunctions.h:13,
+                 from ../userInterface.c:11:
+c:/winavr-20100110/lib/gcc/../../avr/include/util/delay.h:90:3: warning: #warning "Compiler optimizations disabled; functions from <util/delay.h> won't work as designed"
+../userInterface.c: In function 'main':
+../userInterface.c:46: warning: implicit declaration of function 'enable_watchdog'
+Finished building: ../userInterface.c
+ 
+Building target: userInterface.elf
+Invoking: AVR C Linker
+avr-gcc -Wl,-Map,userInterface.map -mmcu=atmega16 -o "userInterface.elf"  ./keypad.o ./lcd.o ./uart.o ./userInterface.o ./userinterfaceFunctions.o   
+./userInterface.o: In function `main':
+../userInterface.c:46: undefined reference to `enable_watchdog'
+make: *** [userInterface.elf] Error 1
+03:44:41 **** Incremental Build of configuration Debug for project systemHandler ****
+make all 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega16 systemHandler.elf
+AVR Memory Usage
+----------------
+Device: atmega16
+
+Program:    1712 bytes (10.4% Full)
+(.text + .data + .bootloader)
+
+Data:        204 bytes (19.9% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
+03:44:42 **** Incremental Build of configuration Debug for project userInterface ****
+make all 
+Building file: ../userInterface.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega16 -DF_CPU=1000000UL -MMD -MP -MF"userInterface.d" -MT"userInterface.o" -c -o "userInterface.o" "../userInterface.c"
+In file included from ../lcd.h:14,
+                 from ../userinterfaceFunctions.h:13,
+                 from ../userInterface.c:11:
+c:/winavr-20100110/lib/gcc/../../avr/include/util/delay.h:90:3: warning: #warning "Compiler optimizations disabled; functions from <util/delay.h> won't work as designed"
+Finished building: ../userInterface.c
+ 
+Building target: userInterface.elf
+Invoking: AVR C Linker
+avr-gcc -Wl,-Map,userInterface.map -mmcu=atmega16 -o "userInterface.elf"  ./keypad.o ./lcd.o ./uart.o ./userInterface.o ./userinterfaceFunctions.o   
+Finished building target: userInterface.elf
+ 
+Invoking: AVR Create Extended Listing
+avr-objdump -h -S userInterface.elf  >"userInterface.lss"
+Finished building: userInterface.lss
+ 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega16 userInterface.elf
+AVR Memory Usage
+----------------
+Device: atmega16
+
+Program:   12776 bytes (78.0% Full)
+(.text + .data + .bootloader)
+
+Data:        238 bytes (23.2% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
+03:44:59 **** Incremental Build of configuration Debug for project systemHandler ****
+make all 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega16 systemHandler.elf
+AVR Memory Usage
+----------------
+Device: atmega16
+
+Program:    1712 bytes (10.4% Full)
+(.text + .data + .bootloader)
+
+Data:        204 bytes (19.9% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
+03:44:59 **** Incremental Build of configuration Debug for project userInterface ****
+make all 
+Building file: ../userInterface.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega16 -DF_CPU=1000000UL -MMD -MP -MF"userInterface.d" -MT"userInterface.o" -c -o "userInterface.o" "../userInterface.c"
+In file included from ../lcd.h:14,
+                 from ../userinterfaceFunctions.h:13,
+                 from ../userInterface.c:11:
+c:/winavr-20100110/lib/gcc/../../avr/include/util/delay.h:90:3: warning: #warning "Compiler optimizations disabled; functions from <util/delay.h> won't work as designed"
+Finished building: ../userInterface.c
+ 
+Building target: userInterface.elf
+Invoking: AVR C Linker
+avr-gcc -Wl,-Map,userInterface.map -mmcu=atmega16 -o "userInterface.elf"  ./keypad.o ./lcd.o ./uart.o ./userInterface.o ./userinterfaceFunctions.o   
+Finished building target: userInterface.elf
+ 
+Invoking: AVR Create Extended Listing
+avr-objdump -h -S userInterface.elf  >"userInterface.lss"
+Finished building: userInterface.lss
+ 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega16 userInterface.elf
+AVR Memory Usage
+----------------
+Device: atmega16
+
+Program:   12776 bytes (78.0% Full)
+(.text + .data + .bootloader)
+
+Data:        238 bytes (23.2% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
+03:46:25 **** Incremental Build of configuration Debug for project systemHandler ****
+make all 
+Building file: ../system.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega16 -DF_CPU=1000000UL -MMD -MP -MF"system.d" -MT"system.o" -c -o "system.o" "../system.c"
+In file included from ../uart.h:13,
+                 from ../system.c:8:
+c:/winavr-20100110/lib/gcc/../../avr/include/util/delay.h:90:3: warning: #warning "Compiler optimizations disabled; functions from <util/delay.h> won't work as designed"
+Finished building: ../system.c
+ 
+Building target: systemHandler.elf
+Invoking: AVR C Linker
+avr-gcc -Wl,-Map,systemHandler.map -mmcu=atmega16 -o "systemHandler.elf"  ./external_eeprom.o ./i2c.o ./system.o ./uart.o   
+Finished building target: systemHandler.elf
+ 
+Invoking: AVR Create Extended Listing
+avr-objdump -h -S systemHandler.elf  >"systemHandler.lss"
+Finished building: systemHandler.lss
+ 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega16 systemHandler.elf
+AVR Memory Usage
+----------------
+Device: atmega16
+
+Program:    1724 bytes (10.5% Full)
+(.text + .data + .bootloader)
+
+Data:        204 bytes (19.9% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
+03:46:26 **** Incremental Build of configuration Debug for project userInterface ****
+make all 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega16 userInterface.elf
+AVR Memory Usage
+----------------
+Device: atmega16
+
+Program:   12776 bytes (78.0% Full)
+(.text + .data + .bootloader)
+
+Data:        238 bytes (23.2% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
+03:46:30 **** Incremental Build of configuration Debug for project systemHandler ****
+make all 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega16 systemHandler.elf
+AVR Memory Usage
+----------------
+Device: atmega16
+
+Program:    1724 bytes (10.5% Full)
+(.text + .data + .bootloader)
+
+Data:        204 bytes (19.9% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
+03:46:30 **** Incremental Build of configuration Debug for project userInterface ****
+make all 
+Building file: ../userInterface.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega16 -DF_CPU=1000000UL -MMD -MP -MF"userInterface.d" -MT"userInterface.o" -c -o "userInterface.o" "../userInterface.c"
+In file included from ../lcd.h:14,
+                 from ../userinterfaceFunctions.h:13,
+                 from ../userInterface.c:11:
+c:/winavr-20100110/lib/gcc/../../avr/include/util/delay.h:90:3: warning: #warning "Compiler optimizations disabled; functions from <util/delay.h> won't work as designed"
+Finished building: ../userInterface.c
+ 
+Building target: userInterface.elf
+Invoking: AVR C Linker
+avr-gcc -Wl,-Map,userInterface.map -mmcu=atmega16 -o "userInterface.elf"  ./keypad.o ./lcd.o ./uart.o ./userInterface.o ./userinterfaceFunctions.o   
+Finished building target: userInterface.elf
+ 
+Invoking: AVR Create Extended Listing
+avr-objdump -h -S userInterface.elf  >"userInterface.lss"
+Finished building: userInterface.lss
+ 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega16 userInterface.elf
+AVR Memory Usage
+----------------
+Device: atmega16
+
+Program:   12776 bytes (78.0% Full)
+(.text + .data + .bootloader)
+
+Data:        238 bytes (23.2% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
+03:49:16 **** Incremental Build of configuration Debug for project systemHandler ****
+make all 
+Building file: ../system.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega16 -DF_CPU=1000000UL -MMD -MP -MF"system.d" -MT"system.o" -c -o "system.o" "../system.c"
+In file included from ../uart.h:13,
+                 from ../system.c:8:
+c:/winavr-20100110/lib/gcc/../../avr/include/util/delay.h:90:3: warning: #warning "Compiler optimizations disabled; functions from <util/delay.h> won't work as designed"
+Finished building: ../system.c
+ 
+Building target: systemHandler.elf
+Invoking: AVR C Linker
+avr-gcc -Wl,-Map,systemHandler.map -mmcu=atmega16 -o "systemHandler.elf"  ./external_eeprom.o ./i2c.o ./system.o ./uart.o   
+Finished building target: systemHandler.elf
+ 
+Invoking: AVR Create Extended Listing
+avr-objdump -h -S systemHandler.elf  >"systemHandler.lss"
+Finished building: systemHandler.lss
+ 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega16 systemHandler.elf
+AVR Memory Usage
+----------------
+Device: atmega16
+
+Program:    1730 bytes (10.6% Full)
+(.text + .data + .bootloader)
+
+Data:        204 bytes (19.9% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
+03:49:18 **** Incremental Build of configuration Debug for project userInterface ****
+make all 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega16 userInterface.elf
+AVR Memory Usage
+----------------
+Device: atmega16
+
+Program:   12776 bytes (78.0% Full)
+(.text + .data + .bootloader)
+
+Data:        238 bytes (23.2% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
+03:49:24 **** Incremental Build of configuration Debug for project systemHandler ****
+make all 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega16 systemHandler.elf
+AVR Memory Usage
+----------------
+Device: atmega16
+
+Program:    1730 bytes (10.6% Full)
+(.text + .data + .bootloader)
+
+Data:        204 bytes (19.9% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
+03:49:24 **** Incremental Build of configuration Debug for project userInterface ****
+make all 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega16 userInterface.elf
+AVR Memory Usage
+----------------
+Device: atmega16
+
+Program:   12776 bytes (78.0% Full)
+(.text + .data + .bootloader)
+
+Data:        238 bytes (23.2% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
+03:55:08 **** Incremental Build of configuration Debug for project systemHandler ****
+make all 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega16 systemHandler.elf
+AVR Memory Usage
+----------------
+Device: atmega16
+
+Program:    1730 bytes (10.6% Full)
+(.text + .data + .bootloader)
+
+Data:        204 bytes (19.9% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
+03:55:09 **** Incremental Build of configuration Debug for project userInterface ****
+make all 
+Building file: ../userInterface.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega16 -DF_CPU=1000000UL -MMD -MP -MF"userInterface.d" -MT"userInterface.o" -c -o "userInterface.o" "../userInterface.c"
+In file included from ../lcd.h:14,
+                 from ../userinterfaceFunctions.h:13,
+                 from ../userInterface.c:11:
+c:/winavr-20100110/lib/gcc/../../avr/include/util/delay.h:90:3: warning: #warning "Compiler optimizations disabled; functions from <util/delay.h> won't work as designed"
+Finished building: ../userInterface.c
+ 
+Building target: userInterface.elf
+Invoking: AVR C Linker
+avr-gcc -Wl,-Map,userInterface.map -mmcu=atmega16 -o "userInterface.elf"  ./keypad.o ./lcd.o ./uart.o ./userInterface.o ./userinterfaceFunctions.o   
+Finished building target: userInterface.elf
+ 
+Invoking: AVR Create Extended Listing
+avr-objdump -h -S userInterface.elf  >"userInterface.lss"
+Finished building: userInterface.lss
+ 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega16 userInterface.elf
+AVR Memory Usage
+----------------
+Device: atmega16
+
+Program:   14064 bytes (85.8% Full)
+(.text + .data + .bootloader)
+
+Data:        253 bytes (24.7% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
+03:55:45 **** Incremental Build of configuration Debug for project systemHandler ****
+make all 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega16 systemHandler.elf
+AVR Memory Usage
+----------------
+Device: atmega16
+
+Program:    1730 bytes (10.6% Full)
+(.text + .data + .bootloader)
+
+Data:        204 bytes (19.9% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
+03:55:45 **** Incremental Build of configuration Debug for project userInterface ****
+make all 
+Building file: ../userInterface.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega16 -DF_CPU=1000000UL -MMD -MP -MF"userInterface.d" -MT"userInterface.o" -c -o "userInterface.o" "../userInterface.c"
+In file included from ../lcd.h:14,
+                 from ../userinterfaceFunctions.h:13,
+                 from ../userInterface.c:11:
+c:/winavr-20100110/lib/gcc/../../avr/include/util/delay.h:90:3: warning: #warning "Compiler optimizations disabled; functions from <util/delay.h> won't work as designed"
+Finished building: ../userInterface.c
+ 
+Building target: userInterface.elf
+Invoking: AVR C Linker
+avr-gcc -Wl,-Map,userInterface.map -mmcu=atmega16 -o "userInterface.elf"  ./keypad.o ./lcd.o ./uart.o ./userInterface.o ./userinterfaceFunctions.o   
+Finished building target: userInterface.elf
+ 
+Invoking: AVR Create Extended Listing
+avr-objdump -h -S userInterface.elf  >"userInterface.lss"
+Finished building: userInterface.lss
+ 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega16 userInterface.elf
+AVR Memory Usage
+----------------
+Device: atmega16
+
+Program:   14074 bytes (85.9% Full)
+(.text + .data + .bootloader)
+
+Data:        253 bytes (24.7% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
+03:58:37 **** Incremental Build of configuration Debug for project systemHandler ****
+make all 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega16 systemHandler.elf
+AVR Memory Usage
+----------------
+Device: atmega16
+
+Program:    1730 bytes (10.6% Full)
+(.text + .data + .bootloader)
+
+Data:        204 bytes (19.9% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
+03:58:38 **** Incremental Build of configuration Debug for project userInterface ****
+make all 
+Building file: ../userInterface.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega16 -DF_CPU=1000000UL -MMD -MP -MF"userInterface.d" -MT"userInterface.o" -c -o "userInterface.o" "../userInterface.c"
+In file included from ../lcd.h:14,
+                 from ../userinterfaceFunctions.h:13,
+                 from ../userInterface.c:11:
+c:/winavr-20100110/lib/gcc/../../avr/include/util/delay.h:90:3: warning: #warning "Compiler optimizations disabled; functions from <util/delay.h> won't work as designed"
+Finished building: ../userInterface.c
+ 
+Building target: userInterface.elf
+Invoking: AVR C Linker
+avr-gcc -Wl,-Map,userInterface.map -mmcu=atmega16 -o "userInterface.elf"  ./keypad.o ./lcd.o ./uart.o ./userInterface.o ./userinterfaceFunctions.o   
+Finished building target: userInterface.elf
+ 
+Invoking: AVR Create Extended Listing
+avr-objdump -h -S userInterface.elf  >"userInterface.lss"
+Finished building: userInterface.lss
+ 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega16 userInterface.elf
+AVR Memory Usage
+----------------
+Device: atmega16
+
+Program:   12582 bytes (76.8% Full)
+(.text + .data + .bootloader)
+
+Data:        239 bytes (23.3% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
+03:59:41 **** Incremental Build of configuration Debug for project systemHandler ****
+make all 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega16 systemHandler.elf
+AVR Memory Usage
+----------------
+Device: atmega16
+
+Program:    1730 bytes (10.6% Full)
+(.text + .data + .bootloader)
+
+Data:        204 bytes (19.9% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
+03:59:41 **** Incremental Build of configuration Debug for project userInterface ****
+make all 
+Building file: ../userInterface.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega16 -DF_CPU=1000000UL -MMD -MP -MF"userInterface.d" -MT"userInterface.o" -c -o "userInterface.o" "../userInterface.c"
+In file included from ../lcd.h:14,
+                 from ../userinterfaceFunctions.h:13,
+                 from ../userInterface.c:11:
+c:/winavr-20100110/lib/gcc/../../avr/include/util/delay.h:90:3: warning: #warning "Compiler optimizations disabled; functions from <util/delay.h> won't work as designed"
+Finished building: ../userInterface.c
+ 
+Building target: userInterface.elf
+Invoking: AVR C Linker
+avr-gcc -Wl,-Map,userInterface.map -mmcu=atmega16 -o "userInterface.elf"  ./keypad.o ./lcd.o ./uart.o ./userInterface.o ./userinterfaceFunctions.o   
+Finished building target: userInterface.elf
+ 
+Invoking: AVR Create Extended Listing
+avr-objdump -h -S userInterface.elf  >"userInterface.lss"
+Finished building: userInterface.lss
+ 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega16 userInterface.elf
+AVR Memory Usage
+----------------
+Device: atmega16
+
+Program:   13360 bytes (81.5% Full)
+(.text + .data + .bootloader)
+
+Data:        253 bytes (24.7% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
+03:59:58 **** Incremental Build of configuration Debug for project systemHandler ****
+make all 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega16 systemHandler.elf
+AVR Memory Usage
+----------------
+Device: atmega16
+
+Program:    1730 bytes (10.6% Full)
+(.text + .data + .bootloader)
+
+Data:        204 bytes (19.9% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
+03:59:59 **** Incremental Build of configuration Debug for project userInterface ****
+make all 
+Building file: ../userInterface.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega16 -DF_CPU=1000000UL -MMD -MP -MF"userInterface.d" -MT"userInterface.o" -c -o "userInterface.o" "../userInterface.c"
+In file included from ../lcd.h:14,
+                 from ../userinterfaceFunctions.h:13,
+                 from ../userInterface.c:11:
+c:/winavr-20100110/lib/gcc/../../avr/include/util/delay.h:90:3: warning: #warning "Compiler optimizations disabled; functions from <util/delay.h> won't work as designed"
+Finished building: ../userInterface.c
+ 
+Building target: userInterface.elf
+Invoking: AVR C Linker
+avr-gcc -Wl,-Map,userInterface.map -mmcu=atmega16 -o "userInterface.elf"  ./keypad.o ./lcd.o ./uart.o ./userInterface.o ./userinterfaceFunctions.o   
+Finished building target: userInterface.elf
+ 
+Invoking: AVR Create Extended Listing
+avr-objdump -h -S userInterface.elf  >"userInterface.lss"
+Finished building: userInterface.lss
+ 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega16 userInterface.elf
+AVR Memory Usage
+----------------
+Device: atmega16
+
+Program:   13364 bytes (81.6% Full)
+(.text + .data + .bootloader)
+
+Data:        253 bytes (24.7% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
+04:04:01 **** Incremental Build of configuration Debug for project systemHandler ****
+make all 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega16 systemHandler.elf
+AVR Memory Usage
+----------------
+Device: atmega16
+
+Program:    1730 bytes (10.6% Full)
+(.text + .data + .bootloader)
+
+Data:        204 bytes (19.9% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
+04:04:01 **** Incremental Build of configuration Debug for project userInterface ****
+make all 
+Building file: ../userInterface.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega16 -DF_CPU=1000000UL -MMD -MP -MF"userInterface.d" -MT"userInterface.o" -c -o "userInterface.o" "../userInterface.c"
+In file included from ../lcd.h:14,
+                 from ../userinterfaceFunctions.h:13,
+                 from ../userInterface.c:11:
+c:/winavr-20100110/lib/gcc/../../avr/include/util/delay.h:90:3: warning: #warning "Compiler optimizations disabled; functions from <util/delay.h> won't work as designed"
+Finished building: ../userInterface.c
+ 
+Building target: userInterface.elf
+Invoking: AVR C Linker
+avr-gcc -Wl,-Map,userInterface.map -mmcu=atmega16 -o "userInterface.elf"  ./keypad.o ./lcd.o ./uart.o ./userInterface.o ./userinterfaceFunctions.o   
+Finished building target: userInterface.elf
+ 
+Invoking: AVR Create Extended Listing
+avr-objdump -h -S userInterface.elf  >"userInterface.lss"
+Finished building: userInterface.lss
+ 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega16 userInterface.elf
+AVR Memory Usage
+----------------
+Device: atmega16
+
+Program:   13336 bytes (81.4% Full)
+(.text + .data + .bootloader)
+
+Data:        253 bytes (24.7% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
+04:04:59 **** Incremental Build of configuration Debug for project systemHandler ****
+make all 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega16 systemHandler.elf
+AVR Memory Usage
+----------------
+Device: atmega16
+
+Program:    1730 bytes (10.6% Full)
+(.text + .data + .bootloader)
+
+Data:        204 bytes (19.9% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
+04:04:59 **** Incremental Build of configuration Debug for project userInterface ****
+make all 
+Building file: ../userInterface.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega16 -DF_CPU=1000000UL -MMD -MP -MF"userInterface.d" -MT"userInterface.o" -c -o "userInterface.o" "../userInterface.c"
+In file included from ../lcd.h:14,
+                 from ../userinterfaceFunctions.h:13,
+                 from ../userInterface.c:11:
+c:/winavr-20100110/lib/gcc/../../avr/include/util/delay.h:90:3: warning: #warning "Compiler optimizations disabled; functions from <util/delay.h> won't work as designed"
+Finished building: ../userInterface.c
+ 
+Building target: userInterface.elf
+Invoking: AVR C Linker
+avr-gcc -Wl,-Map,userInterface.map -mmcu=atmega16 -o "userInterface.elf"  ./keypad.o ./lcd.o ./uart.o ./userInterface.o ./userinterfaceFunctions.o   
+Finished building target: userInterface.elf
+ 
+Invoking: AVR Create Extended Listing
+avr-objdump -h -S userInterface.elf  >"userInterface.lss"
+Finished building: userInterface.lss
+ 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega16 userInterface.elf
+AVR Memory Usage
+----------------
+Device: atmega16
+
+Program:   13324 bytes (81.3% Full)
+(.text + .data + .bootloader)
+
+Data:        253 bytes (24.7% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
+04:16:11 **** Incremental Build of configuration Debug for project systemHandler ****
+make all 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega16 systemHandler.elf
+AVR Memory Usage
+----------------
+Device: atmega16
+
+Program:    1730 bytes (10.6% Full)
+(.text + .data + .bootloader)
+
+Data:        204 bytes (19.9% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
+04:16:11 **** Incremental Build of configuration Debug for project userInterface ****
+make all 
+Building file: ../userInterface.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega16 -DF_CPU=1000000UL -MMD -MP -MF"userInterface.d" -MT"userInterface.o" -c -o "userInterface.o" "../userInterface.c"
+In file included from ../lcd.h:14,
+                 from ../userinterfaceFunctions.h:13,
+                 from ../userInterface.c:11:
+c:/winavr-20100110/lib/gcc/../../avr/include/util/delay.h:90:3: warning: #warning "Compiler optimizations disabled; functions from <util/delay.h> won't work as designed"
+Finished building: ../userInterface.c
+ 
+Building target: userInterface.elf
+Invoking: AVR C Linker
+avr-gcc -Wl,-Map,userInterface.map -mmcu=atmega16 -o "userInterface.elf"  ./keypad.o ./lcd.o ./uart.o ./userInterface.o ./userinterfaceFunctions.o   
+Finished building target: userInterface.elf
+ 
+Invoking: AVR Create Extended Listing
+avr-objdump -h -S userInterface.elf  >"userInterface.lss"
+Finished building: userInterface.lss
+ 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega16 userInterface.elf
+AVR Memory Usage
+----------------
+Device: atmega16
+
+Program:   13336 bytes (81.4% Full)
+(.text + .data + .bootloader)
+
+Data:        253 bytes (24.7% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
+04:37:45 **** Incremental Build of configuration Debug for project systemHandler ****
+make all 
+Building file: ../system.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega16 -DF_CPU=1000000UL -MMD -MP -MF"system.d" -MT"system.o" -c -o "system.o" "../system.c"
+In file included from ../uart.h:13,
+                 from ../system.c:8:
+c:/winavr-20100110/lib/gcc/../../avr/include/util/delay.h:90:3: warning: #warning "Compiler optimizations disabled; functions from <util/delay.h> won't work as designed"
+Finished building: ../system.c
+ 
+Building target: systemHandler.elf
+Invoking: AVR C Linker
+avr-gcc -Wl,-Map,systemHandler.map -mmcu=atmega16 -o "systemHandler.elf"  ./external_eeprom.o ./i2c.o ./system.o ./uart.o   
+Finished building target: systemHandler.elf
+ 
+Invoking: AVR Create Extended Listing
+avr-objdump -h -S systemHandler.elf  >"systemHandler.lss"
+Finished building: systemHandler.lss
+ 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega16 systemHandler.elf
+AVR Memory Usage
+----------------
+Device: atmega16
+
+Program:    1836 bytes (11.2% Full)
+(.text + .data + .bootloader)
+
+Data:        204 bytes (19.9% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
+04:37:45 **** Incremental Build of configuration Debug for project userInterface ****
+make all 
+Building file: ../userInterface.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega16 -DF_CPU=1000000UL -MMD -MP -MF"userInterface.d" -MT"userInterface.o" -c -o "userInterface.o" "../userInterface.c"
+In file included from ../lcd.h:14,
+                 from ../userinterfaceFunctions.h:13,
+                 from ../userInterface.c:11:
+c:/winavr-20100110/lib/gcc/../../avr/include/util/delay.h:90:3: warning: #warning "Compiler optimizations disabled; functions from <util/delay.h> won't work as designed"
+../userInterface.c: In function 'main':
+../userInterface.c:79: error: expected declaration or statement at end of input
+make: *** [userInterface.o] Error 1
+04:38:11 **** Incremental Build of configuration Debug for project systemHandler ****
+make all 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega16 systemHandler.elf
+AVR Memory Usage
+----------------
+Device: atmega16
+
+Program:    1836 bytes (11.2% Full)
+(.text + .data + .bootloader)
+
+Data:        204 bytes (19.9% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
+04:38:11 **** Incremental Build of configuration Debug for project userInterface ****
+make all 
+Building file: ../userInterface.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega16 -DF_CPU=1000000UL -MMD -MP -MF"userInterface.d" -MT"userInterface.o" -c -o "userInterface.o" "../userInterface.c"
+In file included from ../lcd.h:14,
+                 from ../userinterfaceFunctions.h:13,
+                 from ../userInterface.c:11:
+c:/winavr-20100110/lib/gcc/../../avr/include/util/delay.h:90:3: warning: #warning "Compiler optimizations disabled; functions from <util/delay.h> won't work as designed"
+Finished building: ../userInterface.c
+ 
+Building target: userInterface.elf
+Invoking: AVR C Linker
+avr-gcc -Wl,-Map,userInterface.map -mmcu=atmega16 -o "userInterface.elf"  ./keypad.o ./lcd.o ./uart.o ./userInterface.o ./userinterfaceFunctions.o   
+Finished building target: userInterface.elf
+ 
+Invoking: AVR Create Extended Listing
+avr-objdump -h -S userInterface.elf  >"userInterface.lss"
+Finished building: userInterface.lss
+ 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega16 userInterface.elf
+AVR Memory Usage
+----------------
+Device: atmega16
+
+Program:   13092 bytes (79.9% Full)
+(.text + .data + .bootloader)
+
+Data:        239 bytes (23.3% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
+04:39:35 **** Incremental Build of configuration Debug for project systemHandler ****
+make all 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega16 systemHandler.elf
+AVR Memory Usage
+----------------
+Device: atmega16
+
+Program:    1836 bytes (11.2% Full)
+(.text + .data + .bootloader)
+
+Data:        204 bytes (19.9% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
+04:39:36 **** Incremental Build of configuration Debug for project userInterface ****
+make all 
+Building file: ../userInterface.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega16 -DF_CPU=1000000UL -MMD -MP -MF"userInterface.d" -MT"userInterface.o" -c -o "userInterface.o" "../userInterface.c"
+In file included from ../lcd.h:14,
+                 from ../userinterfaceFunctions.h:13,
+                 from ../userInterface.c:11:
+c:/winavr-20100110/lib/gcc/../../avr/include/util/delay.h:90:3: warning: #warning "Compiler optimizations disabled; functions from <util/delay.h> won't work as designed"
+Finished building: ../userInterface.c
+ 
+Building target: userInterface.elf
+Invoking: AVR C Linker
+avr-gcc -Wl,-Map,userInterface.map -mmcu=atmega16 -o "userInterface.elf"  ./keypad.o ./lcd.o ./uart.o ./userInterface.o ./userinterfaceFunctions.o   
+Finished building target: userInterface.elf
+ 
+Invoking: AVR Create Extended Listing
+avr-objdump -h -S userInterface.elf  >"userInterface.lss"
+Finished building: userInterface.lss
+ 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega16 userInterface.elf
+AVR Memory Usage
+----------------
+Device: atmega16
+
+Program:   13098 bytes (79.9% Full)
+(.text + .data + .bootloader)
+
+Data:        239 bytes (23.3% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 

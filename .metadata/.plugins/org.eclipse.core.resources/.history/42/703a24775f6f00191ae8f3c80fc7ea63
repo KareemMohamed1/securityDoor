@@ -1,0 +1,16 @@
+/*
+ * uart.c
+ *
+ *  Created on: May 5, 2019
+ *      Author: karee
+ */
+
+
+#include"uart.h"
+
+void UART1_init(void){
+	UCSRA |=(1<<U2X);
+	UCSRB =(1<<RXEN)|(1<<TXEN);
+	UCSRC =(1<<URSEL)|(1<<UCSZ1)|(1<<UCSZ0);
+	UBRRL = 103;
+}

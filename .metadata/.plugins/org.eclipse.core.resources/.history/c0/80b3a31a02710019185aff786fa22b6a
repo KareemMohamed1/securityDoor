@@ -10,15 +10,17 @@
 
 #include"userinterfaceFunctions.h"
 #include"uart.h"
+#include"avr/wdt.h"
+#define PASSWORD_CHANGED 5
+#define OPEN_DOOR 3
 #define PASS_SIZE 4
 uint8 matchFlag;
 uint8 pass[PASS_SIZE];
 uint8 passMatch[PASS_SIZE];
 uint8 PassmatchFlag;
+uint8 errorCounter =0;
 
 int main (void){
-	DDRB|=(1<<PB7);
-	PORTB&=~(1<<PB7);
 	UART_init();
 	uint8 key;
 	start();
@@ -29,7 +31,7 @@ int main (void){
 			getCurrentUserPassword(pass,PASS_SIZE);
 			UART_sendByte(PASS_SIZE);
 			UART_sendArray(pass,PASS_SIZE);
-			_delay_ms(500);
+			_delay_ms(50);
 			PassmatchFlag = UART_recieveByte();
 			if(PassmatchFlag==1){
 				LCD_sendCommand(CLEAR_COMMAND);
@@ -37,23 +39,42 @@ int main (void){
 				_delay_ms(500);
 				getUserNewPassword( pass,passMatch,PASS_SIZE);
 				checkNewPasswordMatching(pass, passMatch, PASS_SIZE);
-				UART_sendByte(5);
+				UART_sendByte(PASSWORD_CHANGED);
 				UART_sendByte(PASS_SIZE);
 				UART_sendArray(passMatch,PASS_SIZE);
-				PORTB|=(1<<PB7);
-
-
+				if(UART_recieveByte()){
+					wdt_enable(1);
+					while(1){}
+				}
 			}
 			else{
+				LCD_sendCommand(CLEAR_COMMAND);
 				LCD_displayString("access denied");
-				_delay_ms(1000);
-
+				if(errorCounter<3){
+					errorCounter++;
+				}
 			}
-
-
 		}
 		else if (key == '#'){
+			UART_sendByte('#');
 			getUserPasswordToOpenDoor(pass,PASS_SIZE);
+			UART_sendByte(PASS_SIZE);
+			UART_sendArray(pass,PASS_SIZE);
+			_delay_ms(50);
+			PassmatchFlag = UART_recieveByte();
+			if(PassmatchFlag==1){
+				LCD_sendCommand(OPEN_DOOR);
+				LCD_sendCommand(CLEAR_COMMAND);
+				LCD_displayString("welcome");
+				_delay_ms(500);
+			}
+			else{
+				LCD_sendCommand(CLEAR_COMMAND);
+				LCD_displayString("access denied");
+				if(errorCounter<3){
+					errorCounter++;
+				}
+			}
 
 		}
 	}

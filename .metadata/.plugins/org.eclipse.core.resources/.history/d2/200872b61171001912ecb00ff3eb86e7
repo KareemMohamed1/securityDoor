@@ -1,0 +1,21 @@
+/*
+ * timer0.h
+ *
+ *  Created on: May 7, 2019
+ *      Author: karee
+ */
+
+#ifndef TIMER1_H_
+#define TIMER1_H_
+
+
+
+#include "datatypes.h"
+#include "dioavrRegisters.h"
+#include "util/delay.h"
+#include "commonMacros.h"
+#include "stdlib.h"
+#include "avr/io.h"
+#include "avr/interrupt.h"
+void TIMER1_init();
+#endif /* TIMER1_H_ */

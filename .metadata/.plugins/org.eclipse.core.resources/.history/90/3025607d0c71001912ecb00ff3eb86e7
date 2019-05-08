@@ -1,0 +1,12 @@
+/*
+ * timer0.c
+ *
+ *  Created on: May 7, 2019
+ *      Author: karee
+ */
+#include "timer1.h"
+
+void TIMER1_init(){
+	TCCR1A =(1<<FOC1A)|(1<<FOC1B)
+	TCNT1=0;
+}

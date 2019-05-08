@@ -1,0 +1,19 @@
+/*
+ * timer0.c
+ *
+ *  Created on: May 7, 2019
+ *      Author: karee
+ */
+#include "timer1.h"
+
+void TIMER1_init(){
+	TCCR1A =(1<<FOC1A)|(1<<FOC1B);
+	TCCR1B =(1<<CS12)|(1<<CS10);
+	TCNT1L=0;
+	TCNT1H=0;
+	TIMSK = (1<<TOIE1);
+}
+
+ISR(TIMER1_OVF){
+	timerCounter++;
+}
